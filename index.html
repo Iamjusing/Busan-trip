@@ -1,634 +1,1827 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>釜山海風之旅 2026 ｜ 隨身數位手冊</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --notion-bg: #FFFFFF;
-            --notion-page-bg: #FAFAFA;
-            --text-main: #37352F;
-            --text-muted: #787774;
-            --text-light: #9B9A97;
-            
-            /* 釜山海洋風 + 珊瑚橘 */
-            --busan-blue: #0077C2;
-            --busan-blue-hover: #005FA0;
-            --busan-blue-bg: rgba(0, 119, 194, 0.06);
-            --coral-orange: #FF6B4A;
-            --coral-orange-bg: rgba(255, 107, 74, 0.08);
-            
-            /* 狀態色 */
-            --notion-green: #0F7B4E;
-            --notion-green-bg: #EEF6F2;
-            --border-color: rgba(55, 53, 47, 0.09);
-            --radius-card: 14px;
-            --shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.05), 0 2px 4px rgba(15, 15, 15, 0.03);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>釜山海風之旅 2026 ｜ 隨身數位手冊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+<style>
+    :root {
+        --notion-bg: #FFFFFF;
+        --notion-page-bg: #FAFAFA;
+        --text-main: #37352F;
+        --text-muted: #787774;
+        --text-light: #9B9A97;
 
-        body {
-            font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
-            background-color: var(--notion-page-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            letter-spacing: -0.01em;
-            padding-bottom: 80px;
-        }
+        /* 釜山海洋風 + 珊瑚橘 */
+        --busan-blue: #0077C2;
+        --busan-blue-hover: #005FA0;
+        --busan-blue-bg: rgba(0, 119, 194, 0.06);
+        --coral-orange: #FF6B4A;
+        --coral-orange-bg: rgba(255, 107, 74, 0.08);
+        --sunny-yellow: #C98A00;
+        --sunny-yellow-bg: rgba(201, 138, 0, 0.08);
+        --soft-purple: #7C5CBF;
+        --soft-purple-bg: rgba(124, 92, 191, 0.08);
 
-        /* 頂部高級感 Header */
-        header {
-            background: var(--notion-bg);
-            padding: 24px 20px 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: left;
-            position: relative;
-        }
-        header .cover-strip {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--busan-blue), var(--coral-orange));
-        }
-        header h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        header p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-        }
+        /* 狀態色 */
+        --notion-green: #0F7B4E;
+        --notion-green-bg: #EEF6F2;
+        --notion-red: #C0392B;
+        --notion-red-bg: #FBEAE8;
+        --border-color: rgba(55, 53, 47, 0.09);
+        --radius-card: 14px;
+        --shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.05), 0 2px 4px rgba(15, 15, 15, 0.03);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
 
-        /* 固定主導覽列：融入毛玻璃與極細線條 */
-        .main-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            overflow-x: auto;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            scrollbar-width: none;
-        }
-        .main-nav::-webkit-scrollbar { display: none; }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+    }
 
-        .nav-btn {
-            flex: 1;
-            min-width: 80px;
-            padding: 16px 4px;
-            background: none;
-            border: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            text-align: center;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .nav-btn.active {
-            color: var(--busan-blue);
-            font-weight: 700;
-        }
-        .nav-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 20%; right: 20%;
-            height: 3px;
-            background-color: var(--busan-blue);
-            border-radius: 3px 3px 0 0;
-        }
+    body {
+        font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+        background-color: var(--notion-page-bg);
+        color: var(--text-main);
+        line-height: 1.6;
+        letter-spacing: -0.01em;
+        padding-bottom: 80px;
+        font-size: 15px;
+    }
 
-        /* 內文主容器 */
-        .container {
-            max-width: 540px;
-            margin: 0 auto;
-            padding: 20px 16px;
-        }
+    /* 頂部高級感 Header */
+    header {
+        background: var(--notion-bg);
+        padding: 26px 20px 18px 20px;
+        border-bottom: 1px solid var(--border-color);
+        text-align: left;
+        position: relative;
+    }
+    header .cover-strip {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, var(--busan-blue), var(--coral-orange));
+    }
+    header h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    header p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 6px;
+    }
+    header .header-pills {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    header .h-pill {
+        font-size: 0.72rem;
+        background: var(--busan-blue-bg);
+        color: var(--busan-blue);
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+    }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+    /* 固定主導覽列：融入毛玻璃與極細線條 */
+    .main-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        display: flex;
+        overflow-x: auto;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        scrollbar-width: none;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .nav-btn {
+        flex: 1;
+        min-width: 78px;
+        padding: 15px 4px;
+        background: none;
+        border: none;
+        font-size: 0.84rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        font-family: inherit;
+    }
+    .nav-btn.active {
+        color: var(--busan-blue);
+        font-weight: 700;
+    }
+    .nav-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 20%; right: 20%;
+        height: 3px;
+        background-color: var(--busan-blue);
+        border-radius: 3px 3px 0 0;
+    }
 
-        /* 真正的 Notion 卡片風格 */
-        .card {
-            background-color: var(--notion-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-card);
-            padding: 18px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:active {
-            transform: scale(0.99);
-        }
+    /* 內文主容器 */
+    .container {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 20px 16px;
+    }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
 
-        /* Notion 標誌性 Callout 區塊 */
-        .callout {
-            background: var(--busan-blue-bg);
-            border-left: 4px solid var(--busan-blue);
-            padding: 14px;
-            border-radius: 6px;
-            font-size: 0.88rem;
-            margin-bottom: 14px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .callout.orange {
-            background: var(--coral-orange-bg);
-            border-left-color: var(--coral-orange);
-        }
-        .callout-emoji { font-size: 1.2rem; line-height: 1; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        /* 16:9 高級感預留圖區 */
-        .img-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #F2F1EE;
-            border-radius: 10px;
-            margin-bottom: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 0.82rem;
-            font-weight: 500;
-            border: 1px dashed #D3D1CB;
-            gap: 4px;
-        }
+    /* 真正的 Notion 卡片風格 */
+    .card {
+        background-color: var(--notion-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-card);
+        padding: 18px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
 
-        /* 精緻 Badge 標籤 */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            font-size: 0.76rem;
-            font-weight: 600;
-            border-radius: 20px;
-            margin-right: 6px;
-            margin-bottom: 6px;
-        }
-        .badge-success { background-color: var(--notion-green-bg); color: var(--notion-green); }
-        .badge-orange { background-color: var(--coral-orange-bg); color: var(--coral-orange); }
-        .badge-blue { background-color: var(--busan-blue-bg); color: var(--busan-blue); }
+    .card-title {
+        font-size: 1.08rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
 
-        /* 地圖導航按鈕 (操作手感極佳) */
-        .map-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #F2F1EE;
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 24px;
-            font-size: 0.82rem;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 10px;
-            width: 100%;
-            transition: background-color 0.2s;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        .map-btn:active { background-color: #E4E3DF; }
+    /* Notion 標誌性 Callout 區塊 */
+    .callout {
+        background: var(--busan-blue-bg);
+        border-left: 4px solid var(--busan-blue);
+        padding: 14px;
+        border-radius: 6px;
+        font-size: 0.88rem;
+        margin-bottom: 14px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .callout.orange { background: var(--coral-orange-bg); border-left-color: var(--coral-orange); }
+    .callout.green { background: var(--notion-green-bg); border-left-color: var(--notion-green); }
+    .callout.yellow { background: var(--sunny-yellow-bg); border-left-color: var(--sunny-yellow); }
+    .callout-emoji { font-size: 1.2rem; line-height: 1; }
 
-        /* 行程子頁籤設計 (小膠囊形狀) */
-        .sub-nav {
-            display: flex;
-            background-color: #EFEFEF;
-            padding: 4px;
-            border-radius: 24px;
-            margin-bottom: 18px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .sub-btn {
-            flex: 1;
-            padding: 10px 0;
-            background: none;
-            border: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-        .sub-btn.active {
-            background-color: var(--notion-bg);
-            color: var(--text-main);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
+    /* 16:9 高級感預留圖區 */
+    .img-placeholder {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #F2F1EE;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-light);
+        font-size: 0.82rem;
+        font-weight: 500;
+        border: 1px dashed #D3D1CB;
+        gap: 4px;
+    }
 
-        /* 俐落時間軸樣式 */
-        .timeline-item {
-            position: relative;
-            padding-left: 24px;
-            border-left: 2px solid #EAEAEA;
-            padding-bottom: 22px;
-        }
-        .timeline-item:last-child {
-            border-left: 2px solid transparent;
-            padding-bottom: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -6px; top: 6px;
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            background-color: var(--busan-blue);
-            border: 2px solid var(--notion-bg);
-            box-shadow: 0 0 0 2px var(--busan-blue-bg);
-        }
-        .timeline-time {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--busan-blue);
-            margin-bottom: 4px;
-            background: var(--busan-blue-bg);
-            display: inline-block;
-            padding: 1px 6px;
-            border-radius: 4px;
-        }
+    /* 精緻 Badge 標籤 */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        border-radius: 20px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        white-space: nowrap;
+    }
+    .badge-success { background-color: var(--notion-green-bg); color: var(--notion-green); }
+    .badge-orange { background-color: var(--coral-orange-bg); color: var(--coral-orange); }
+    .badge-blue { background-color: var(--busan-blue-bg); color: var(--busan-blue); }
+    .badge-yellow { background-color: var(--sunny-yellow-bg); color: var(--sunny-yellow); }
+    .badge-purple { background-color: var(--soft-purple-bg); color: var(--soft-purple); }
+    .badge-red { background-color: var(--notion-red-bg); color: var(--notion-red); }
 
-        /* 質感下拉折疊細節 */
-        details {
-            background-color: #F8F7F4;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            margin-top: 10px;
-            padding: 4px 12px;
-        }
-        summary {
-            font-size: 0.84rem;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-            padding: 8px 0;
-            outline: none;
-            user-select: none;
-        }
-        .details-content {
-            font-size: 0.84rem;
-            color: #555555;
-            padding: 8px 0 12px 0;
-            line-height: 1.6;
-            border-top: 1px solid var(--border-color);
-        }
+    /* 地圖導航按鈕 */
+    .map-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F2F1EE;
+        color: var(--text-main);
+        padding: 8px 14px;
+        border-radius: 24px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 8px;
+        margin-right: 6px;
+        transition: background-color 0.2s;
+        border: 1px solid rgba(0,0,0,0.03);
+    }
+    .map-btn:active { background-color: #E4E3DF; }
 
-        /* Notion 乾淨表格 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
-        th, td {
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #F8F7F4;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
+    /* 行程子頁籤設計 (小膠囊形狀) */
+    .sub-nav {
+        display: flex;
+        background-color: #EFEFEF;
+        padding: 4px;
+        border-radius: 24px;
+        margin-bottom: 18px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 52px;
+        z-index: 900;
+    }
+    .sub-btn {
+        flex: 1;
+        padding: 10px 0;
+        background: none;
+        border: none;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+    }
+    .sub-btn.active {
+        background-color: var(--notion-bg);
+        color: var(--text-main);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
 
-        .text-right { text-align: right; }
-        .section-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin: 24px 0 12px 0;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-    </style>
+    /* 俐落時間軸樣式 */
+    .timeline-item {
+        position: relative;
+        padding-left: 24px;
+        border-left: 2px solid #EAEAEA;
+        padding-bottom: 22px;
+    }
+    .timeline-item:last-child {
+        border-left: 2px solid transparent;
+        padding-bottom: 0;
+    }
+    .timeline-dot {
+        position: absolute;
+        left: -6px; top: 6px;
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background-color: var(--busan-blue);
+        border: 2px solid var(--notion-bg);
+        box-shadow: 0 0 0 2px var(--busan-blue-bg);
+    }
+    .timeline-dot.coral { background-color: var(--coral-orange); box-shadow: 0 0 0 2px var(--coral-orange-bg); }
+    .timeline-dot.purple { background-color: var(--soft-purple); box-shadow: 0 0 0 2px var(--soft-purple-bg); }
+    .timeline-dot.yellow { background-color: var(--sunny-yellow); box-shadow: 0 0 0 2px var(--sunny-yellow-bg); }
+    .timeline-time {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--busan-blue);
+        margin-bottom: 6px;
+        background: var(--busan-blue-bg);
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: 'Inter', monospace;
+    }
+    .timeline-activity {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+    .timeline-desc {
+        font-size: 0.85rem;
+        color: #555555;
+        margin-top: 2px;
+        white-space: pre-line;
+    }
+
+    /* 質感下拉折疊細節 */
+    details {
+        background-color: #F8F7F4;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 4px 12px;
+    }
+    summary {
+        font-size: 0.84rem;
+        font-weight: 600;
+        color: var(--text-main);
+        cursor: pointer;
+        padding: 8px 0;
+        outline: none;
+        user-select: none;
+        list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: '▸ '; color: var(--busan-blue); }
+    details[open] summary::before { content: '▾ '; }
+    .details-content {
+        font-size: 0.84rem;
+        color: #555555;
+        padding: 8px 0 12px 0;
+        line-height: 1.7;
+        border-top: 1px solid var(--border-color);
+        white-space: pre-line;
+    }
+
+    /* Notion 乾淨表格 */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.82rem;
+        margin-top: 10px;
+    }
+    th, td {
+        border-bottom: 1px solid var(--border-color);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #F8F7F4;
+        font-weight: 600;
+        color: var(--text-muted);
+    }
+    tfoot td { font-weight: 700; background: #F8F7F4; }
+
+    .text-right { text-align: right; }
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 26px 0 12px 0;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .section-title:first-child { margin-top: 0; }
+    .section-sub {
+        font-size: 0.78rem;
+        color: var(--text-light);
+        margin: -8px 0 14px 0;
+    }
+
+    .food-card-name { font-weight: 700; font-size: 1.02rem; }
+    .food-card-kr { font-size: 0.8rem; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+    .food-card-desc { font-size: 0.85rem; color: #555; margin-top: 6px; white-space: pre-line; }
+
+    .price-tag {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--coral-orange);
+        background: var(--coral-orange-bg);
+        padding: 2px 9px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 4px;
+    }
+
+    .checkin-grid {
+        display: flex;
+        gap: 10px;
+        margin: 10px 0;
+    }
+    .checkin-box {
+        flex: 1;
+        background: var(--notion-green-bg);
+        border-radius: 8px;
+        padding: 8px 10px;
+        text-align: center;
+    }
+    .checkin-box.out { background: var(--notion-red-bg); }
+    .checkin-box .lab { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
+    .checkin-box .val { font-size: 0.88rem; font-weight: 700; margin-top: 2px; }
+
+    .budget-grand {
+        background: linear-gradient(135deg, var(--busan-blue), #00A8E8);
+        border-radius: var(--radius-card);
+        padding: 22px 20px;
+        color: white;
+        margin-top: 10px;
+    }
+    .budget-grand .row { display:flex; justify-content:space-between; font-size:0.88rem; opacity:0.9; margin-bottom:8px; }
+    .budget-grand .total { display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.3); padding-top:14px; margin-top:6px; }
+    .budget-grand .total .amt { font-size: 1.7rem; font-weight: 800; font-family: 'Inter', monospace; }
+
+    .big3-num {
+        display:inline-flex; align-items:center; justify-content:center;
+        width: 22px; height: 22px; border-radius: 50%;
+        background: var(--sunny-yellow); color: white; font-size: 0.72rem; font-weight: 700;
+        margin-right: 8px; flex-shrink: 0;
+    }
+    .big3-row { display:flex; align-items:flex-start; padding: 10px 0; border-bottom: 1px solid var(--border-color); gap: 6px; }
+    .big3-row:last-child { border-bottom: none; }
+
+    .night-row { display:flex; gap:10px; align-items:flex-start; padding: 9px 0; border-bottom: 1px solid var(--border-color); }
+    .night-row:last-child { border-bottom: none; }
+    .night-icon { font-size: 1.1rem; flex-shrink: 0; width: 24px; text-align: center; }
+
+    .scroll-top {
+        position: fixed; bottom: 22px; right: 18px;
+        width: 42px; height: 42px; border-radius: 50%;
+        background: var(--busan-blue); color: white;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: var(--shadow-md); cursor: pointer;
+        font-size: 18px; z-index: 999; opacity: 0; transition: opacity 0.3s;
+    }
+    .scroll-top.show { opacity: 1; }
+
+    .footer-note {
+        text-align: center;
+        font-size: 0.72rem;
+        color: var(--text-light);
+        margin-top: 30px;
+        padding: 0 10px;
+    }
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="cover-strip"></div>
-        <h1>🌊 釜山海風五日遊</h1>
-        <p>2026/7/1（三）– 7/5（日）• 2大1小親子的完美隨身手冊</p>
-    </header>
+<header>
+    <div class="cover-strip"></div>
+    <h1>🌊 釜山海風五日遊</h1>
+    <p>2026/7/1（三）– 7/5（日）・2大1小（寶貝4歲半）親子隨身手冊</p>
+    <div class="header-pills">
+        <span class="h-pill">✈️ EASTAR ZE988</span>
+        <span class="h-pill">✈️ Jeju Air 7C6153</span>
+        <span class="h-pill">🏨 Hound Garden Hotel</span>
+        <span class="h-pill">🎫 BIG3 Pass ×2</span>
+    </div>
+</header>
 
-    <!-- 固定主導覽頁籤 -->
-    <nav class="main-nav">
-        <button class="nav-btn active" onclick="switchMainTab('overview')">📋 總覽</button>
-        <button class="nav-btn" onclick="switchMainTab('detail')">📅 詳細行程</button>
-        <button class="nav-btn" onclick="switchMainTab('food')">🍽️ 美食</button>
-        <button class="nav-btn" onclick="switchMainTab('tickets')">🎫 票券景點</button>
-        <button class="nav-btn" onclick="switchMainTab('budget')">💰 預算</button>
-    </nav>
+<nav class="main-nav">
+    <button class="nav-btn active" onclick="switchMainTab('overview')">📋 總覽</button>
+    <button class="nav-btn" onclick="switchMainTab('detail')">📅 詳細行程</button>
+    <button class="nav-btn" onclick="switchMainTab('food')">🍽️ 美食</button>
+    <button class="nav-btn" onclick="switchMainTab('tickets')">🎫 票券景點</button>
+    <button class="nav-btn" onclick="switchMainTab('shopping')">🛍️ 購物</button>
+    <button class="nav-btn" onclick="switchMainTab('budget')">💰 預算</button>
+</nav>
 
-    <div class="container">
+<div class="container">
 
-        <!-- 1. 行程總覽頁籤 -->
-        <div id="overview" class="tab-content active">
-            <div class="card">
-                <div class="card-title">✈️ 航班資訊</div>
-                <div class="callout">
-                    <div class="callout-emoji">🛫</div>
-                    <div>
-                        <strong>去程 (7/1 三)：EASTAR JET ZE988</strong><br>
-                        ⏰ 02:50 TPE → 06:05 PUS (紅眼班機)<br>
-                        <span style="color:var(--text-muted); font-size:0.8rem;">預訂號 KB2JUA / 托運 15kg。出關後搭計程車至海雲台約 45-50 分鐘 (₩30,000–40,000)。</span>
-                    </div>
-                </div>
-                <div class="callout orange">
-                    <div class="callout-emoji">🛬</div>
-                    <div>
-                        <strong>回程 (7/5 日)：Jeju Air 7C6153</strong><br>
-                        ⏰ 22:00 PUS → 23:30 TPE<br>
-                        <span style="color:var(--text-muted); font-size:0.8rem;">3人座位已排 / 訂票代碼 KGMM2H / 托運 15kg/人。</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🏨 住宿資訊 (4晚連住)</div>
-                <p style="font-weight:700; font-size:1.05rem;">Hound Garden & Terrace Hotel</p>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 10px 0;">📍 55, Gunam-ro 12beon-gil, Haeundae-gu, 釜山</p>
+    <!-- 1. 行程總覽頁籤 -->
+    <div id="overview" class="tab-content active">
+        <div class="card">
+            <div class="card-title">✈️ 航班資訊</div>
+            <div class="callout">
+                <div class="callout-emoji">🛫</div>
                 <div>
-                    <span class="badge badge-success">✅ Booking.com已預訂</span>
-                    <span class="badge badge-blue">大型雙人房 (禁菸)</span>
+                    <strong>去程（7/1 三）：EASTAR JET ZE988</strong><br>
+                    ⏰ 02:50 TPE → 06:05 PUS（深夜紅眼班機）<br>
+                    <span style="color:var(--text-muted); font-size:0.8rem;">預訂號 KB2JUA／托運行李 15kg（折扣票）。出關後搭計程車至海雲台約45-50分鐘（₩30,000–40,000）。</span>
                 </div>
-                <div style="font-size: 0.85rem; margin-top: 10px; background:#F5F5F5; padding:10px; border-radius:6px;">
-                    👉 <strong>Check-in:</strong> 7/1 15:00後 | <strong>Check-out:</strong> 7/5 11:00前<br>
-                    🌟 <strong>備註：</strong>含飯店浴缸、頂樓露台、電熱水壺，極度適合育兒休息。
+            </div>
+            <div class="callout orange">
+                <div class="callout-emoji">🛬</div>
+                <div>
+                    <strong>回程（7/5 日）：Jeju Air 7C6153</strong><br>
+                    ⏰ 22:00 PUS → 23:30 TPE<br>
+                    <span style="color:var(--text-muted); font-size:0.8rem;">3人座位｜訂票代碼 KGMM2H｜托運行李 15kg/人。飯店→金海機場計程車約40-45分鐘（₩30,000–45,000）。</span>
                 </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Hound+Garden+Terrace+Hotel+Haeundae" target="_blank" class="map-btn">📍 Google Maps 開啟導航</a>
-            </div>
-
-            <div class="section-title">📆 每日行程摘要</div>
-            <div class="card" onclick="goToDay(1)">
-                <p><strong>Day 1 (7/1 三) 海雲台藍線與沙灘之旅</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">海岸列車 → 天空膠囊 11:00(順光) → 灌籃高手平交道 → 廣安里海鮮晚餐</p>
-            </div>
-            <div class="card" onclick="goToDay(2)">
-                <p><strong>Day 2 (7/2 四) 機張速度與新世界藝術之旅</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">Skyline Luge 09:30 → 樂天名品Outlet → Museum 1 → Club D Oasis汗蒸幕</p>
-            </div>
-            <div class="card" onclick="goToDay(3)">
-                <p><strong>Day 3 (7/3 五) 松島無敵海景與西面血拼</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">松島海上纜車 → 龍宮天空步道 → 南浦洞午餐 → 西面商圈潮流大購物</p>
-            </div>
-            <div class="card" onclick="goToDay(4)">
-                <p><strong>Day 4 (7/4 六) 白淺灘文化村與無人機大秀</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">影島開橋秀(14:00) → 白淺灘海景咖啡 → 南浦樂天百貨 → 廣安里無人機秀</p>
-            </div>
-            <div class="card" onclick="goToDay(5)">
-                <p><strong>Day 5 (7/5 日) 市區最後採購與完美返台</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">海雲台海水浴場 → Spa Land 奢華汗蒸幕 → 新世界百貨補貨 → 返台</p>
             </div>
         </div>
 
+        <div class="card">
+            <div class="card-title">🏨 住宿資訊（4晚連住 7/1–7/5）</div>
+            <p style="font-weight:700; font-size:1.05rem;">Hound Garden &amp; Terrace Hotel</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 10px 0;">📍 55, Gunam-ro 12beon-gil, Haeundae-gu, 釜山</p>
+            <div>
+                <span class="badge badge-success">✅ Booking.com已預訂</span>
+                <span class="badge badge-blue">大型雙人房（禁菸）</span>
+            </div>
+            <div class="checkin-grid">
+                <div class="checkin-box">
+                    <div class="lab">CHECK-IN</div>
+                    <div class="val">7/1 15:00–22:00</div>
+                </div>
+                <div class="checkin-box out">
+                    <div class="lab">CHECK-OUT</div>
+                    <div class="val">7/5 11:00前</div>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; margin-top: 6px; background:#F5F5F5; padding:10px; border-radius:6px;">
+                💰 <strong>價格：</strong>TWD 13,240／KRW 634,959（含稅），Booking.com已支付 KRW 57,724<br>
+                ⚠️ <strong>取消政策：</strong>入住2天前可免費取消，未提前取消罰全額房費
+            </div>
+            <details>
+                <summary>🏠 查看飯店設施清單</summary>
+                <div class="details-content">
+<strong>房內設施：</strong>
+🛁 房內熱水按摩池（浴缸/淋浴）　🚿 免治馬桶（沖洗座）
+🪟 陽台+市景/海景　❄️ 各房獨立空調+暖氣+空氣清淨機
+📺 平面電視　☕ 電熱水壺　🛌 加長床鋪（&gt;200cm）
+🛗 電梯可達｜🧒 歡迎任何年齡孩童
+⚠️ 無法提供嬰兒床或加床
 
-        <!-- 2. 詳細行程頁籤 (含 Day1-Day5 子 Tab) -->
-        <div id="detail" class="tab-content">
-            <div class="sub-nav">
-                <button class="sub-btn active" id="btn-d1" onclick="switchDayTab(1)">D1</button>
-                <button class="sub-btn" id="btn-d2" onclick="switchDayTab(2)">D2</button>
-                <button class="sub-btn" id="btn-d3" onclick="switchDayTab(3)">D3</button>
-                <button class="sub-btn" id="btn-d4" onclick="switchDayTab(4)">D4</button>
-                <button class="sub-btn" id="btn-d5" onclick="switchDayTab(5)">D5</button>
+<strong>公共設施（需1F登記）：</strong>
+☕ 免費咖啡機（共用）　🧊 製冰機　🚿 共用洗手台　🍱 微波爐
+🏊 最頂樓空中泳池（入口取免費毛巾），淺水區有球池，寶貝最愛！
+🛋️ 球池旁開放式交誼廳
             </div>
-
-            <!-- Day 1 -->
-            <div id="day1" class="day-content">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">02:50–06:05</div>
-                    <div style="font-weight:700;">✈️ 抵達金海機場</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">深夜紅眼班機落地，出關直接搭計程車前往海雲台（約45-50分鐘）。讓爸爸和寶貝在車上補眠。</p>
-                    <span class="badge badge-orange" style="margin-top:6px;">預估車費：₩30,000–40,000</span>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">08:30–10:00</div>
-                    <div style="font-weight:700;">🍲 早餐 — 豬肉湯飯暖胃</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">步行3分鐘至海雲台主街。把白飯倒進鮮美高湯裡，剪軟嫩豬肉給寶貝，非常暖胃。</p>
-                    
-                    <details>
-                        <summary>🔍 經典推薦 3 選 1 餐廳項目</summary>
-                        <div class="details-content">
-                            <strong>① 密陽血腸豬肉湯飯（밀양순대국밥）：</strong>24小時，湯頭最濃郁。<br>
-                            <strong>② 五福豬肉湯飯（오복돼지국밥）：</strong>濃厚且清爽，在地熟客極多。<br>
-                            <strong>③ 嚴湧帛豬肉湯飯（엄용백돼지국밥）：</strong>清甜派首選，極適合小朋友。
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary>🥣 其他早餐/特色麵包店備案</summary>
-                        <div class="details-content">
-                            <strong>• 本粥 Bonjuk (본죽)：</strong>極推鮑魚粥 (전복죽)，清淡不油膩，寶貝超適合。<br>
-                            <strong>• EGG DROP：</strong>韓國爆漿蛋三明治，厚實吐司現炒蛋液！<br>
-                            <strong>• 洗衣房麵包坊 (세탁소빵집)：</strong>外觀像洗車/洗衣店，招牌鹽可頌超讚。<br>
-                            <strong>• Standard Bread：</strong>質感絕佳的厚片吐司烘焙坊。
-                        </div>
-                    </details>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">10:10–11:00</div>
-                    <div style="font-weight:700;">🚂 海岸列車 (尾浦站 → 青沙浦站)</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">全排座位面向大海。單程約15-20分鐘。</p>
-                    <span class="badge badge-orange" style="margin-top:4px;">現場購票：₩7,000/人 (不需用Pass換)</span>
-                    <a href="https://www.google.com/maps/search/?api=1&query=해운대블루ライン파크 미포정거장" target="_blank" class="map-btn">📍 尾浦站 Google Maps</a>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">11:00–12:30</div>
-                    <div style="font-weight:700;">🚡 天空膠囊列車</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">青沙浦站 → 尾浦站。11:00 是完美「順光時段」，彩色小包廂拍照超驚艷！</p>
-                    <span class="badge badge-success" style="margin-top:4px;">✅ 已預訂：₩55,000/3人 (RS26008983848)</span>
-                </div>
-            </div>
-
-            <!-- Day 2 -->
-            <div id="day2" class="day-content" style="display:none;">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">09:30–11:30</div>
-                    <div style="font-weight:700;">🛷 Skyline Luge 機張斜坡滑車</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">大人可以抱著4歲半的寶貝共乘。平日早上完全不排隊！</p>
-                    <span class="badge badge-success">✅ 成人使用 BIG3 Pass A區兌換 (免費)</span>
-                    <span class="badge badge-orange">現場付：兒童共乘券 ₩12,000</span>
-                    <a href="https://www.google.com/maps/search/?api=1&query=스카이라인루지 기장" target="_blank" class="map-btn">📍 Skyline Luge Google Maps</a>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">14:00–16:00</div>
-                    <div style="font-weight:700;">🎨 Museum 1 數位媒體藝術館</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">上億顆 LED 地板與巨型螢幕交織，進來避暑消暑最完美。</p>
-                    <span class="badge badge-success">✅ 成人使用 BIG3 Pass B區兌換 (免費)</span>
-                    <span class="badge badge-orange">現場購：兒童票 ₩13,000</span>
-                </div>
-            </div>
-
-            <!-- Day 3 -->
-            <div id="day3" class="day-content" style="display:none;">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-time">09:30–11:30</div>
-                    <div style="font-weight:700;">🚠 松島海上纜車 & 天空步道</div>
-                    <p style="font-size:0.85rem; color:#555; margin-top:2px;">全透明水晶車廂懸浮海上。散步至「松島龍宮天空步道」。</p>
-                    <span class="badge badge-success">✅ 成人使用 BIG3 Pass B區兌換 (免費)</span>
-                    <span class="badge badge-orange">現場付：步道門票 ₩2,000/人</span>
-                    <a href="https://www.google.com/maps/search/?api=1&query=송도해상케이블카" target="_blank" class="map-btn">📍 松島纜車 Google Maps</a>
-                </div>
-            </div>
-            
-            <!-- Day 4 & 5 結構同上略，保持頁面精簡流暢 -->
-            <div id="day4" class="day-content" style="display:none;">
-                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-time">14:00</div><strong>🌉 影島大橋開橋秀</strong><p>免費觀賞海鷗橋面緩緩升起。</p></div>
-                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-time">15:00</div><strong>🏡 白淺灘文化村</strong><p>海景咖啡廳享受優閒午後。</p></div>
-            </div>
-            <div id="day5" class="day-content" style="display:none;">
-                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-time">11:30</div><strong>♨️ Centum City Spa Land 汗蒸幕</strong><p>全釜山最豪華五星級汗蒸幕，滿4歲即可進場放鬆。</p><span class="badge badge-orange">現場或預訂：約 ₩63,000</span></div>
-            </div>
+            </details>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hound+Garden+Terrace+Hotel+Haeundae" target="_blank" class="map-btn">📍 Google Maps 開啟導航</a>
         </div>
 
+        <div class="section-title">📆 每日行程摘要</div>
+        <div class="section-sub">點擊卡片可直接跳轉至該天的詳細時間軸</div>
 
-        <!-- 3. 美食清單頁籤 -->
-        <div id="food" class="tab-content">
-            <div class="section-title">🍜 經典必吃：豬肉湯飯</div>
-            <div class="card">
-                <div class="card-title">密陽血腸豬肉湯飯 <span style="font-size:0.85rem; font-weight:400; color:var(--text-muted);">밀양순대국밥</span></div>
-                <p style="font-size: 0.85rem; color: #555;">24小時營業，湯頭最濃郁。推薦點清湯版（不辣），把白飯倒進高湯裡剪給小孩吃。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=밀양순대국밥" target="_blank" class="map-btn">📍 用韓文店名導航 Google Maps</a>
-            </div>
-
-            <div class="section-title">🥩 頂級美味：韓式烤肉</div>
-            <div class="card">
-                <div class="card-title">味贊王鹽烤肉 <span style="font-size:0.85rem; font-weight:400; color:var(--text-muted);">맛찬들 왕소금구이</span></div>
-                <p style="font-size: 0.85rem; color: #555;">3.5cm 超厚切豬五花！店員會全程專業桌邊代烤，外酥內爆汁，大人小孩都愛。</p>
-                <a href="https://www.google.com/maps/search/?api=1&query=맛찬들왕소금구이" target="_blank" class="map-btn">📍 用韓文店名導航 Google Maps</a>
+        <div class="card" onclick="goToDay(1)" style="cursor:pointer;">
+            <p><strong>Day 1（7/1 三）海雲台在地精華一條龍</strong></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">海岸列車→平交道→天空步道→天空膠囊→午餐→Check-in大補眠→海雲台沙灘→傳統市場</p>
+            <div style="margin-top:8px;">
+                <span class="badge badge-success">✅ 天空膠囊已訂 ₩55,000/3人</span>
             </div>
         </div>
-
-
-        <!-- 4. 票券與景點介紹頁籤 -->
-        <div id="tickets" class="tab-content">
-            <div class="card" style="background-color: var(--busan-blue-bg); border-color: var(--busan-blue);">
-                <p><strong>💡 本次行程 BIG 3 Pass 最優分配</strong></p>
-                <p style="font-size: 0.82rem; color:var(--text-muted); margin-top:4px;">購買 2 張大人 Pass，免費兌換門票最貴的景點組合：</p>
-                <table>
-                    <tr><th>兌換順序</th><th>景點名稱</th><th>區域</th><th>原價</th></tr>
-                    <tr><td>⭐ 1</td><td>機張 Skyline Luge 滑車</td><td>A區大點</td><td>₩30,000</td></tr>
-                    <tr><td>⭐ 2</td><td>Museum 1 數位藝術館</td><td>B區小點</td><td>₩18,000</td></tr>
-                    <tr><td>⭐ 3</td><td>松島海上纜車 (來回)</td><td>B區小點</td><td>₩20,000</td></tr>
-                </table>
-                <p style="font-size: 0.82rem; font-weight: 700; color: var(--notion-green); margin-top: 10px;">🎉 雙人累計現省 ₩136,000（約折合台幣 $3,196）！</p>
-            </div>
-
-            <div class="section-title">🗺️ 預留照片卡片 (未來自行換 src)</div>
-            <div class="card">
-                <div class="img-placeholder">
-                    <span>🛷 Skyline Luge 機張滑車</span>
-                    <span style="font-size:0.7rem; color:#B0B0B0;">尺寸建議 16:9</span>
-                </div>
-                <p><strong>機張 Skyline Luge 斜坡滑車</strong></p>
-                <span class="badge badge-success">✅ 成人 Pass 已含</span>
-                <span class="badge badge-orange">兒童現場票 ₩12,000</span>
-            </div>
-
-            <div class="card">
-                <div class="img-placeholder">
-                    <span>🏬 新世界百貨 Centum City 店</span>
-                </div>
-                <p><strong>世界最大百貨公司物資補給站</strong></p>
-                <p style="font-size:0.82rem; color:var(--text-muted);">推車動線零阻礙，地下美食街有正宗雪冰(설빙)與頂級化妝品櫃位。</p>
+        <div class="card" onclick="goToDay(2)" style="cursor:pointer;">
+            <p><strong>Day 2（7/2 四）機張放電＋Centum City精華避暑</strong></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">Skyline Luge斜坡滑車→新世界百貨午餐→Museum 1藝術館→逛街→Club D Oasis汗蒸幕</p>
+            <div style="margin-top:8px;">
+                <span class="badge badge-yellow">🎫 BIG3 Pass A區+B區</span>
             </div>
         </div>
-
-
-        <!-- 5. 預算總覽頁籤 -->
-        <div id="budget" class="tab-content">
-            <div class="card">
-                <div class="card-title">✅ 在台已付款項目 (共 NT$ 46,531)</div>
-                <table>
-                    <thead>
-                        <tr><th>項目</th><th>說明</th><th class="text-right">金額 (TWD)</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>去程機票</td><td>易斯達航空 3人</td><td class="text-right">$15,075</td></tr>
-                        <tr><td>回程機票</td><td>濟州航空 3人</td><td class="text-right">$15,277</td></tr>
-                        <tr><td>海雲台飯店</td><td>Hound Garden 4晚</td><td class="text-right">$13,240</td></tr>
-                        <tr><td>天空膠囊</td><td>青沙浦→尾浦 順光</td><td class="text-right">$1,293</td></tr>
-                        <tr><td>BIG 3 Pass</td><td>Klook 2張大人票</td><td class="text-right">$1,646</td></tr>
-                    </tbody>
-                </table>
+        <div class="card" onclick="goToDay(3)" style="cursor:pointer;">
+            <p><strong>Day 3（7/3 五）松島纜車＋西面血拼</strong></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">松島海上纜車→龍宮天空步道→岩南公園→南浦洞午餐→西面商圈血拼→西面晚餐</p>
+            <div style="margin-top:8px;">
+                <span class="badge badge-yellow">🎫 BIG3 Pass B區</span>
             </div>
         </div>
-
+        <div class="card" onclick="goToDay(4)" style="cursor:pointer;">
+            <p><strong>Day 4（7/4 六）南浦漫遊＋廣安里夜景</strong></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">甘川洞文化村→南浦洞商圈→樂天光復店（水舞秀+午餐）→影島大橋→廣安里Millac Market→無人機秀</p>
+            <div style="margin-top:8px;">
+                <span class="badge badge-success">免費景點日：水舞秀・開橋秀・展望台・無人機秀</span>
+            </div>
+        </div>
+        <div class="card" onclick="goToDay(5)" style="cursor:pointer;">
+            <p><strong>Day 5（7/5 日）悠閒早晨＋超市大掃貨</strong></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:4px;">海雲台早餐→新世界Centum午餐→Spa Land汗蒸幕→樂天超市大掃貨→金海機場</p>
+            <div style="margin-top:8px;">
+                <span class="badge badge-orange">22:00 起飛返台</span>
+            </div>
+        </div>
     </div>
 
-    <script>
-        function switchMainTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    <!-- 2. 詳細行程頁籤 -->
+    <div id="detail" class="tab-content">
+        <div class="sub-nav">
+            <button class="sub-btn active" id="btn-d1" onclick="switchDayTab(1)">D1</button>
+            <button class="sub-btn" id="btn-d2" onclick="switchDayTab(2)">D2</button>
+            <button class="sub-btn" id="btn-d3" onclick="switchDayTab(3)">D3</button>
+            <button class="sub-btn" id="btn-d4" onclick="switchDayTab(4)">D4</button>
+            <button class="sub-btn" id="btn-d5" onclick="switchDayTab(5)">D5</button>
+        </div>
 
-        function switchDayTab(dayNum) {
-            for(let i=1; i<=5; i++) {
-                let el = document.getElementById('day' + i);
-                if(el) el.style.display = 'none';
-                let btn = document.getElementById('btn-d' + i);
-                if(btn) btn.classList.remove('active');
-            }
-            document.getElementById('day' + dayNum).style.display = 'block';
-            document.getElementById('btn-d' + dayNum).classList.add('active');
-        }
+        <!-- Day 1 -->
+        <div id="day1" class="day-content">
+            <div class="callout">
+                <div class="callout-emoji">📅</div>
+                <div><strong>7/1（三）抵達日 — 海雲台在地精華一條龍</strong></div>
+            </div>
 
-        function goToDay(dayNum) {
-            switchMainTab('detail');
-            const targetBtn = document.querySelector('.main-nav button:nth-child(2)');
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            targetBtn.classList.add('active');
-            switchDayTab(dayNum);
+            <div class="timeline-item">
+                <div class="timeline-dot purple"></div>
+                <div class="timeline-time">02:50–06:05</div>
+                <div class="timeline-activity">✈️ 抵達金海機場</div>
+                <p class="timeline-desc">深夜紅眼班機 EASTAR JET ZE988 落地，出關後直接搭計程車前往海雲台（車程45-50分鐘），在車上讓爸爸和寶貝補眠。</p>
+                <span class="price-tag">機場→飯店 ₩30,000–40,000（約台幣$700–940）</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">08:30–10:00</div>
+                <div class="timeline-activity">🍲 早餐 — 豬肉湯飯暖胃</div>
+                <p class="timeline-desc">飯店寄放行李後，步行3分鐘到海雲台主街。把白飯倒進湯裡，夾軟嫩豬肉給寶貝，超暖胃。冷氣足，可在裡面充電休息。</p>
+                <span class="price-tag">₩10,000–13,000/人（步行3分鐘，免計程車）</span>
+                <details>
+                    <summary>🔍 經典推薦 3選1 餐廳選項</summary>
+                    <div class="details-content">①密陽血腸豬肉湯飯 — 24小時營業，湯頭濃郁配料豐富
+②五福豬肉湯飯 — 口味濃厚清爽，在地人氣高
+③嚴湧帛豬肉湯飯 — 湯頭清甜，海雲台最具代表性</div>
+                </details>
+                <details>
+                    <summary>🥣 其他早餐 / 特色麵包店備案</summary>
+                    <div class="details-content">④本粥 Bonjuk（본죽）— 健康暖胃，推薦전복죽鮑魚粥／야채죽蔬菜粥／해물죽海鮮粥
+⑤濟州家 Jejuga（제주가）— 濟州風味早午餐，推薦제주흑돼지濟州黑豬套餐
+⑥EGG DROP（에그드랍）— 蛋三明治連鎖必吃，推薦Original原味／아보카도牛油果款／베이컨培根款
+
+🍞 特色麵包店：
+☆ 세탁소빵집（洗衣房麵包坊）— 外觀像洗衣店超有趣，推薦鹽可頌/奶油麵包
+☆ 브레댄코 BREDDANCO — 精緻烘焙坊，可頌系列/現烤起司麵包
+☆ BAKERS REPUBLIC — 在地職人麵包，天然酵母歐式麵包
+☆ Standard Bread — 招牌厚片吐司與特色三明治</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">10:10–10:25</div>
+                <div class="timeline-activity">🚂 海岸列車（去程）</div>
+                <p class="timeline-desc">步行或短程計程車到尾浦站，現場購票搭「海岸列車（Beach Train）」沿海前往青沙浦站，全排面向大海的寬敞座位，一路看海。</p>
+                <span class="price-tag">現場購票 ₩7,000/人（不需用Pass換）</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9A%B4%EB%8C%80%EB%B8%94%EB%A3%A8%EB%9D%BC%EC%9D%B8%ED%8C%8C%ED%81%AC%20%EB%AF%B8%ED%8F%AC%EC%97%AD" target="_blank" class="map-btn">📍 尾浦站</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">10:25–11:00</div>
+                <div class="timeline-activity">📸 平交道打卡＋青沙浦天空步道</div>
+                <p class="timeline-desc">出青沙浦站，馬上拍「灌籃高手平交道」（趁遊客少）→ 步行或計程車2分鐘到天空步道，挑戰透明玻璃地板，鳥瞰清澈大海。推車可通行，10:30剛開放，光線好人少。步道長約200公尺，來回步行約10–15分鐘。</p>
+                <span class="price-tag">天空步道／平交道打卡 均免費</span>
+                <div class="img-placeholder"><span>📷 青沙浦天空步道</span><span style="font-size:0.7rem; color:#B0B0B0;">尺寸建議 16:9</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%B2%AD%EC%82%AC%ED%8F%AC%EC%8A%A4%EC%BA%A1%EC%9B%8C%ED%81%AC" target="_blank" class="map-btn">📍 青沙浦天空步道</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot coral"></div>
+                <div class="timeline-time">11:00–11:30</div>
+                <div class="timeline-activity">🚡 天空膠囊列車（回程）</div>
+                <p class="timeline-desc">【您預約的場次】青沙浦站 11:00–11:30 第六入場。回到青沙浦站二樓，登上彩色膠囊列車，順光吹風看海30分鐘，有小電扇，寶貝超興奮！抵達尾浦站後直接散步回主街。</p>
+                <span class="badge badge-success">✅ 已預訂 RS26008983848｜₩55,000/3人（信用卡）｜憑KakaoTalk手機登機證入場</span>
+                <div class="img-placeholder"><span>🚡 天空膠囊列車</span></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">11:30–13:30</div>
+                <div class="timeline-activity">🍱 午餐＋古來思魚糕外帶</div>
+                <p class="timeline-desc">膠囊列車回尾浦站，散步回海雲台主街。外帶魚糕年糕串、超商香蕉牛奶當下午茶補充。</p>
+                <span class="price-tag">₩8,000–15,000/人</span>
+                <details>
+                    <summary>🔍 3選1 午餐選項</summary>
+                    <div class="details-content">①古來思魚糕湯麵 — 魚糕湯麵+魚板串，釜山代表性小吃
+②해운대소문난국수 — 海雲台知名麵條，湯頭清甜
+③超商簡便午餐 — CU/GS25有多種選擇</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot yellow"></div>
+                <div class="timeline-time">13:30–16:30</div>
+                <div class="timeline-activity">🏨 飯店 Check-in＋大補眠（or備案逛街）🌟</div>
+                <p class="timeline-desc">主方案：回Hound Garden辦理進房（15:00開始），拉遮光窗簾，全家躺平補眠3小時（最重要的生存策略！）7月中午紫外線最毒，躲室內最聰明。</p>
+                <details>
+                    <summary>☀️ 備案選項（如果精神還好）</summary>
+                    <div class="details-content">【備案A — 室內商場】海雲台 Centum City 隨意逛逛（計程車約5-8分鐘）超市補給品、文具雜貨、冷氣吹到飽
+
+【備案B — 海景咖啡】Broni咖啡廳（青沙浦海景，招牌布朗尼）／루프탑카페屋頂海景咖啡廳，拍照打卡，吹冷氣休息</div>
+                </details>
+                <span class="price-tag">（備案）海雲台→Centum City 計程車 ₩8,000–12,000</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">16:30–19:00</div>
+                <div class="timeline-activity">🏖️ 海雲台沙灘放電</div>
+                <p class="timeline-desc">換短褲拖鞋，從飯店走5-7分鐘到海水浴場，太陽偏西、海風涼爽，最舒服的時段。寶貝挖沙、踩水、追海鷗盡情玩。</p>
+                <span class="price-tag">免費（飯店步行5-7分鐘）</span>
+                <div class="img-placeholder"><span>🏖️ 海雲台沙灘</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9C%A0%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" class="map-btn">📍 海雲台沙灘</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">19:00–20:30</div>
+                <div class="timeline-activity">🏪 海雲台傳統市場覓食</div>
+                <p class="timeline-desc">玩完沙直接散步到傳統市場（飯店附近步行可達）。帶回飯店吹冷氣配啤酒享用。</p>
+                <details>
+                    <summary>🔍 3選1/組合 晚餐選項</summary>
+                    <div class="details-content">①韓式原味炸雞外帶（불닭不辣款）₩20,000–30,000/份
+②海鮮蔥餅（파전）— 外酥內軟，配馬格利米酒 ₩10,000–15,000
+③黑糖堅果糖餅（씨앗호떡）甜滋滋外帶回飯店 ₩2,000/個</div>
+                </details>
+                <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9C%A0%EB%8C%80%EC%9D%8C%EB%82%A0%EC%A0%84%ED%86%B5%EC%83%9C%EC%9E%A5" target="_blank" class="map-btn">📍 海雲台傳統市場</a>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div id="day2" class="day-content" style="display:none;">
+            <div class="callout orange">
+                <div class="callout-emoji">📅</div>
+                <div><strong>7/2（四）機張放電＋Centum City精華避暑</strong></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">07:30–09:00</div>
+                <div class="timeline-activity">🌅 早餐（出發前快速解決）</div>
+                <p class="timeline-desc">09:00前出發前往機張。</p>
+                <span class="price-tag">₩3,000–8,000/人</span>
+                <details>
+                    <summary>🔍 3選1 早餐選項</summary>
+                    <div class="details-content">①Paris Baguette — 麵包+美式咖啡，快速方便
+②Tous les Jours — 韓式麵包坊，可外帶
+③超商御飯糰+三角飯糰+咖啡 — CU/GS25最省時</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot coral"></div>
+                <div class="timeline-time">09:15–11:30</div>
+                <div class="timeline-activity">🛷 機張 Skyline Luge 斜坡滑車</div>
+                <p class="timeline-desc">計程車直達機張，趕上09:30開園第一波。先搭高空吊椅上山，俯瞰機張臨海風景，從山頂坐特製滑車順賽道滑下（速度自控）。4歲半由爸媽抱著安全共乘，刺激又安全。平日早上完全不排隊。</p>
+                <span class="badge badge-success">✅ BIG3 Pass 兌換 A區（原價₩30,000，免費！）</span>
+                <span class="badge badge-orange">現場補購：兒童共乘券 ₩12,000</span>
+                <div class="img-placeholder"><span>🛷 Skyline Luge 機張滑車</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9D%B8%EB%A3%A8%EC%A7%80%20%EA%B8%B0%EC%9E%A5" target="_blank" class="map-btn">📍 Skyline Luge</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">11:30–13:30</div>
+                <div class="timeline-activity">🍱 午餐選擇（A或B方案）</div>
+                <p class="timeline-desc"><strong>方案A（推薦！）：</strong>計程車機張→Centum City約20分鐘，新世界百貨B1美食街豐盛午餐，吃完直接走路到隔壁Museum 1，一區完成兩件事！</p>
+                <span class="price-tag">₩15,000–25,000/人　計程車 機張→Centum City ₩20,000–25,000（約20分）</span>
+                <details>
+                    <summary>🔍 方案A 餐廳選項 / 方案B Outlet</summary>
+                    <div class="details-content">【方案A：大門家/봉피양/松亭家】
+①大門家（대문가）— 韓式料理人氣爆棚，필수코스
+②봉피양 — 正宗平壤冷麵，麵條Q彈湯頭清甜
+③松亭家（송정횟집）— 韓定食套餐，豐盛實在
+
+【方案B：樂天東釜山Outlet】
+先去Outlet午餐（松亭家或美食街），再計程車到Centum City（車程約10-15分鐘）。優點：可順便逛Outlet精品折扣區。</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot coral"></div>
+                <div class="timeline-time">14:00–16:00</div>
+                <div class="timeline-activity">🎨 Museum 1 數位媒體藝術館</div>
+                <p class="timeline-desc">從新世界百貨步行約3-5分鐘到Museum 1。上億LED地板+巨型螢幕，沉浸式光影藝術，對寶貝像走進巨大萬花筒，大人拍照超出片。下午2-4點是7月紫外線最強時段，在室內最聰明。</p>
+                <span class="badge badge-success">✅ BIG3 Pass 兌換 B區（原價成人₩18,000，免費！）</span>
+                <span class="badge badge-orange">兒童(4-13歲) ₩13,000（需另購）</span>
+                <div class="img-placeholder"><span>🎨 Museum 1 數位媒體藝術館</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EB%AE%A4%EC%A7%80%EC%97%84%EC%9B%90%20%EC%9E%84%EC%8A%A4" target="_blank" class="map-btn">📍 Museum 1</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">16:00–18:00</div>
+                <div class="timeline-activity">🏬 新世界百貨 Centum City 血拼</div>
+                <p class="timeline-desc">欣賞完藝術展，直接回到新世界百貨繼續逛。媽媽血拼：國際大牌、韓系美妝、設計師服飾；爸爸帶寶貝：地下甜點街吃冰淇淋。</p>
+                <span class="price-tag">甜點 ₩5,000–12,000</span>
+                <details>
+                    <summary>🍰 甜點與咖啡推薦 ＋ 加碼景點</summary>
+                    <div class="details-content">①설빙（雪冰）— 韓國刨冰始祖，草莓/芒果口味
+②A Twosome Place — 咖啡+蛋糕，百貨內就有
+③Baskin Robbins 31 — 寶貝最愛，隨時可進
+
+➕ 加碼去哪裡（行程還有彈性）：
+→ 釜山水族館（해운대 아쿠아리움）海雲台沙灘旁，小孩超愛（成人₩28,000 兒童₩22,000，選配）
+→ 海雲台藍線公園周邊小品店
+→ 或直接提早回飯店泡按摩浴缸休息</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot purple"></div>
+                <div class="timeline-time">18:30–20:30</div>
+                <div class="timeline-activity">♨️ Club D Oasis 汗蒸幕（推薦加在這天晚上）</div>
+                <p class="timeline-desc">從Centum City搭計程車約5-8分鐘到Club D Oasis。韓國傳統汗蒸幕體驗，木桶浴/岩盤浴/休息室，適合全家放鬆，4歲半寶貝可入場。搭完滑車逛完街，泡個舒服的湯蒸洗澡，結束後計程車回飯店，輕鬆愉快。</p>
+                <span class="price-tag">建議Klook/KKday線上購（現場購更貴）約₩15,000–25,000/人</span>
+                <span class="price-tag">計程車 Centum→Club D Oasis ₩5,000–8,000　Club D Oasis→飯店 ₩8,000–12,000</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=%ED%81%B4%EB%9F%BD%EB%93%9C%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4" target="_blank" class="map-btn">📍 Club D Oasis</a>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="day3" class="day-content" style="display:none;">
+            <div class="callout green">
+                <div class="callout-emoji">📅</div>
+                <div><strong>7/3（五）松島纜車＋西面血拼</strong></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">08:00–09:00</div>
+                <div class="timeline-activity">🌅 早餐</div>
+                <p class="timeline-desc">08:45從飯店出發搭計程車前往松島。</p>
+                <span class="price-tag">₩3,000–10,000/人　計程車 飯店→松島約₩30,000–40,000</span>
+                <details>
+                    <summary>🔍 早餐選項</summary>
+                    <div class="details-content">①古來思魚糕輕食 — 魚糕串+魚糕湯，輕盈快速
+②Paris Baguette — 可頌+咖啡外帶
+③超商早餐 — GS25/CU三角飯糰，最省時</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot coral"></div>
+                <div class="timeline-time">09:30–10:00</div>
+                <div class="timeline-activity">🚠 松島海上纜車（去程）</div>
+                <p class="timeline-desc">搭透明水晶車廂跨海飛越，低頭直接看清澈湛藍海水在腳下流動，4歲半寶貝像在海上飛翔，超神奇！</p>
+                <span class="badge badge-success">✅ BIG3 Pass 兌換 B區（原價₩20,000，免費！）</span>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">建議選「水晶車廂（透明地板）來回票」</p>
+                <div class="img-placeholder"><span>🚠 松島海上纜車</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%86%A1%EB%8F%84%ED%95%B4%EC%83%81%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4" target="_blank" class="map-btn">📍 松島海上纜車</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">10:00–10:45</div>
+                <div class="timeline-activity">松島龍宮天空步道</div>
+                <p class="timeline-desc">下纜車後步行2分鐘即到。懸崖鏤空鐵網步道，低頭直視腳下海浪，牽著寶貝走，像海上大冒險。步道單程約150公尺，來回步行約20–30分鐘。</p>
+                <span class="price-tag">成人 ₩1,000　7歲以下免費（寶貝免費！）現場付現</span>
+                <p style="font-size:0.78rem; color:var(--notion-red); margin-top:4px;">⚠️ 有些微階梯，推車先寄放纜車站</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">10:45–11:30</div>
+                <div class="timeline-activity">🦕 岩南公園天空花園</div>
+                <p class="timeline-desc">巨型恐龍模型裝置（會發聲+擺動），小男孩最愛！噴泉廣場跑跑放電，散步約30-45分鐘。</p>
+                <span class="price-tag">免費</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">11:30–11:45</div>
+                <div class="timeline-activity">🚠 松島海上纜車（回程）</div>
+                <p class="timeline-desc">悠閒看海，腿部休息。抵達後直接在門口叫計程車前往南浦洞。</p>
+                <span class="price-tag">已包含在來回票內</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">12:00–13:30</div>
+                <div class="timeline-activity">🍱 午餐 — 南浦洞/札嘎其道地美食</div>
+                <p class="timeline-desc">計程車8-10分鐘從松島到南浦洞或札嘎其。吃飽補充下午血拼體力。</p>
+                <span class="price-tag">₩15,000–25,000/人　計程車 松島→南浦洞 ₩10,000–15,000</span>
+                <details>
+                    <summary>🔍 3選1 午餐選項</summary>
+                    <div class="details-content">①남포동 삼계탕 南浦參雞湯 — 整隻雞+人蔘，鮮甜滋補
+②원조한양족발 元祖漢陽豬腳 — 軟嫩豬腳配包飯醬
+③자갈치시장 海鮮定食 — 超新鮮、在地人最愛</div>
+                </details>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%9E%90%EA%B0%88%EC%B9%98%EC%9C%A0%EC%B6%A9%ED%8C%90%EB%A9%80%EC%9A%A9%EC%82%AC%EC%9C%84%EC%83%9D%EC%84%A0%EC%9D%8C%EC%8B%9D%EC%9E%90" target="_blank" class="map-btn">📍 札嘎其市場</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">14:00–16:30</div>
+                <div class="timeline-activity">🛒 西面地下街＋樂天百貨總店</div>
+                <p class="timeline-desc">地鐵1號線約12分鐘到西面（或計程車約20分鐘）。西面地下街：超大型平價韓系服飾/包包/童裝；樂天百貨總店：國際品牌+韓系設計師品牌。爸爸帶寶貝：Baskin Robbins / 育嬰室休息。</p>
+                <span class="price-tag">西面→飯店 計程車 ₩20,000–30,000（約20分鐘）</span>
+                <details>
+                    <summary>☕ 咖啡甜點推薦</summary>
+                    <div class="details-content">①Kitten咖啡（키튼）釜田站旁，特色造型拉花
+②Old Mansion（올드맨션）西面田浦復古風，季節限定蛋糕
+③ARTBOX文具店旁的咖啡廳</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">16:30–18:30</div>
+                <div class="timeline-activity">💄 西面地面時裝街 &amp; OLIVE YOUNG旗艦店</div>
+                <p class="timeline-desc">四點半後外面涼爽，走上地面逛時裝街。OLIVE YOUNG旗艦店（品項最齊全！）、ARTBOX文具雜貨（寶貝最愛）、NC百貨周邊各大韓系潮流品牌。</p>
+                <span class="price-tag">美妝 ₩10,000–50,000</span>
+                <details>
+                    <summary>💄 必買美妝清單</summary>
+                    <div class="details-content">COSRX痘痘貼／Some by Mi／ROUND LAB白樺水／Numbuzin玻尿酸精華</div>
+                </details>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%98%AC%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%98%81%20%EC%9C%A0%EB%9F%BD%EB%84%88%20%EC%84%9C%EB%A9%B4" target="_blank" class="map-btn">📍 OLIVE YOUNG 西面</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">18:30–20:00</div>
+                <div class="timeline-activity">🍗 西面晚餐</div>
+                <p class="timeline-desc">吃完搭計程車回飯店。</p>
+                <span class="price-tag">₩12,000–20,000/人　計程車 西面→飯店 ₩20,000–30,000</span>
+                <details>
+                    <summary>🔍 3選1 晚餐選項</summary>
+                    <div class="details-content">①송정삼대국밥 松亭三代豬肉湯飯 — 湯頭濃郁不辣，寶貝愛
+②서면닭갈비 西面辣炒雞排 — 可點不辣，份量十足
+③일미닭갈비 一味辣炒雞 — 西面名店，配起司超好吃</div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div id="day4" class="day-content" style="display:none;">
+            <div class="callout" style="background:var(--soft-purple-bg); border-left-color:var(--soft-purple);">
+                <div class="callout-emoji">📅</div>
+                <div><strong>7/4（六）南浦漫遊＋廣安里夜景</strong></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">08:00–09:00</div>
+                <div class="timeline-activity">🌅 早餐</div>
+                <p class="timeline-desc">09:00前出發前往甘川洞。</p>
+                <span class="price-tag">₩3,000–10,000/人　計程車 飯店→甘川洞 ₩25,000–35,000（約25分鐘）</span>
+                <details>
+                    <summary>🔍 早餐選項</summary>
+                    <div class="details-content">①해운대역전우동 海雲台車站烏龍麵 — 清爽湯頭，在地早餐首選
+②Paris Baguette — 快速方便，外帶可頌
+③超商御飯糰+熱湯 — 省時，出門前快速解決</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot coral"></div>
+                <div class="timeline-time">09:00–10:30</div>
+                <div class="timeline-activity">🎨 甘川洞文化村</div>
+                <p class="timeline-desc">早鳥避人潮與烈日，順光拍照最美。彩色小屋山城，充滿藝術裝置和壁畫。推車部分路段有坡度，可考慮讓寶貝步行。主要步道全程約1.5–2公里，步行約1-1.5小時。</p>
+                <span class="price-tag">免費（部分展覽₩2,000–5,000）</span>
+                <div class="img-placeholder"><span>🎨 甘川洞文化村</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EA%B0%90%EC%B2%9C%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84" target="_blank" class="map-btn">📍 甘川洞文化村</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">10:45–13:00</div>
+                <div class="timeline-activity">🛍️ 南浦洞商圈 &amp; BIFF廣場</div>
+                <p class="timeline-desc">計程車約10分鐘從甘川洞到南浦洞。BIFF廣場：買黑糖堅果糖餅（必吃！）；光復路時裝街：韓系平價服飾、包包、鞋子；南浦洞地下街：飾品/帽子/文具小物（冷氣強）。</p>
+                <span class="price-tag">糖餅 ₩2,000/個　服飾 ₩15,000–40,000　計程車 甘川洞→南浦洞 ₩10,000–15,000</span>
+                <details>
+                    <summary>☕ 逛街甜點推薦</summary>
+                    <div class="details-content">①元祖糖餅（아저씨씨앗호떡）BIFF廣場旁
+②남포동 빙수 南浦洞刨冰店（夏季必吃）
+③CAFFE BENE 韓系連鎖咖啡（遍布全區）</div>
+                </details>
+                <a href="https://www.google.com/maps/search/?api=1&query=BIFF%EA%B4%91%EC%9E%A5" target="_blank" class="map-btn">📍 BIFF廣場</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">13:00–13:45</div>
+                <div class="timeline-activity">🌊 樂天百貨光復店 午餐＋水舞秀</div>
+                <p class="timeline-desc">Aqua Mall地下一樓至一樓中庭，13:00場室內水舞秀（每場約10-15分鐘），看完直接在百貨美食街吹冷氣午餐。</p>
+                <span class="price-tag">午餐 ₩15,000–25,000/人　水舞秀 免費（每逢整點）</span>
+                <details>
+                    <summary>🔍 3選1 午餐選項</summary>
+                    <div class="details-content">①비빔밥拌飯套餐 — 均衡營養，寶貝也愛
+②가야밀면 釜山式冷麵 — 在地特色，清爽Q彈
+③경복궁韓式套餐 — 豐盛韓定食，品項多樣</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">13:45–14:15</div>
+                <div class="timeline-activity">🌉 影島大橋開橋秀</div>
+                <p class="timeline-desc">從百貨側門步行1分鐘到橋邊，卡位觀賞14:00週末限定開橋秀，橋身緩緩升起，氣勢磅礴（約10-15分鐘）。</p>
+                <span class="badge badge-success">免費　週末限定14:00</span>
+                <div class="img-placeholder"><span>🌉 影島大橋開橋秀</span></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">14:15–16:00</div>
+                <div class="timeline-activity">🏙️ 樂天百貨下午逛街＋展望台</div>
+                <p class="timeline-desc">逛完登頂頂樓展望台（11-13F），360度俯瞰釜山港、影島大橋與釜山塔。環境寬敞，育嬰室機能完善。下午陽光變溫和，拍照視野最清晰。</p>
+                <span class="badge badge-success">展望台 免費　育嬰室完善</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">16:00–18:30</div>
+                <div class="timeline-activity">🛒 廣安里 Millac the Market</div>
+                <p class="timeline-desc">計程車約15分鐘從南浦洞到廣安里。紅磚建築潮流市集，文青設計風，面海石階廣場，買冰淇淋邊吃邊看海。</p>
+                <span class="price-tag">咖啡 ₩6,000–10,000　計程車 南浦洞→廣安里 ₩15,000–20,000</span>
+                <details>
+                    <summary>☕ 廣安里咖啡甜點</summary>
+                    <div class="details-content">①Millac咖啡廳 — 海景窗戶座位超美
+②설빙 雪冰 — 廣安里沙灘旁，夏日必吃
+③뚜레쥬르 Tous les Jours — 麵包+飲料外帶</div>
+                </details>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%80%EB%9D%BD%EB%8D%94%EB%A7%88%EC%BC%93" target="_blank" class="map-btn">📍 Millac the Market</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot purple"></div>
+                <div class="timeline-time">18:30–20:30</div>
+                <div class="timeline-activity">🌃 廣安里沙灘夜景＋無人機秀</div>
+                <p class="timeline-desc">欣賞廣安大橋點燈夜景，帶寶貝坐在沙灘上仰頭看無人機秀，20:00開場，3D燈光圖案變幻超震撼！看完搭計程車回飯店。</p>
+                <span class="badge badge-success">免費！週六限定 20:00 & 22:00（夏季 3–9月）</span>
+                <span class="price-tag">計程車 廣安里→飯店 ₩10,000–15,000</span>
+                <div class="img-placeholder"><span>🌃 廣安里無人機秀</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" class="map-btn">📍 廣安里沙灘</a>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div id="day5" class="day-content" style="display:none;">
+            <div class="callout" style="background:var(--sunny-yellow-bg); border-left-color:var(--sunny-yellow);">
+                <div class="callout-emoji">📅</div>
+                <div><strong>7/5（日）返台日 — 悠閒早晨＋超市大掃貨</strong></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">09:00–11:00</div>
+                <div class="timeline-activity">🍜 古來思魚糕早餐＋退房打包</div>
+                <p class="timeline-desc">悠閒步行到海雲台主街。11:00辦理退房，行李寄放飯店櫃檯。退房前可泡個熱水按摩池，電熱水壺泡包泡麵或茶最後享用。</p>
+                <span class="price-tag">Check-out 11:00前　行李寄放至取件前免費</span>
+                <details>
+                    <summary>🔍 3選1 早餐選項（釜山最後一餐）</summary>
+                    <div class="details-content">①古來思魚糕熱湯麵 — 釜山最後一餐的完美Ending
+②五福豬肉湯飯 — 再吃一次最愛的清爽湯飯
+③密陽血腸湯飯 — 血腸湯飯配白飯，完美道別</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">11:15–13:30</div>
+                <div class="timeline-activity">🏬 新世界百貨 Centum City 午餐</div>
+                <p class="timeline-desc">計程車5-8分鐘到Centum City，全釜山最頂級百貨美食街。吃完媽媽最後補貨美妝+服飾。</p>
+                <span class="price-tag">₩20,000–40,000/人　計程車 飯店→Centum City ₩8,000–12,000</span>
+                <details>
+                    <summary>🔍 3選1 午餐選項</summary>
+                    <div class="details-content">①대문가 大門家韓式料理 — 人氣爆棚，필수코스
+②봉피양 平壤冷麵 — 正宗冷麵最後一吃
+③스시/日式料理 — 換口味，釜山有不少優質日料</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot purple"></div>
+                <div class="timeline-time">13:30–17:30</div>
+                <div class="timeline-activity">♨️ Spa Land 汗蒸幕（登機前最佳享受）</div>
+                <p class="timeline-desc">直接從新世界百貨內無縫進入。4歲半已符合進場年齡，全家一起體驗！換上可愛汗蒸幕衣服，拍「羊角頭」全家福。幾十種不同溫度烤箱、足湯、豪華躺椅。最棒的是：上飛機前在這裡洗澡換衣，讓全家香噴噴清爽登機，寶貝上飛機就能睡！</p>
+                <span class="price-tag">建議Klook/KKday線上購 約₩18,000–25,000起/人（現場購更貴）</span>
+                <div class="img-placeholder"><span>♨️ Spa Land 汗蒸幕</span></div>
+                <a href="https://www.google.com/maps/search/?api=1&query=%EC%8A%A4%ED%8C%8C%EB%9E%9C%EB%93%9C%20%EC%9C%A0%EC%B6%A9%ED%8C%90%EB%A9%80%EC%9A%A9%EC%82%AC%EC%9C%84" target="_blank" class="map-btn">📍 Spa Land</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">17:30–19:00</div>
+                <div class="timeline-activity">🛒 樂天超市 Centum City 終極大掃貨</div>
+                <p class="timeline-desc">從Spa Land直接走到隔壁樂天超市，推大推車掃貨。結帳時出示護照，現場辦理即時退稅，超市提供免費紙箱+膠帶，直接裝箱打包。</p>
+                <span class="price-tag">退稅門檻₩30,000起（憑護照現場辦理）</span>
+                <details>
+                    <summary>🛒 必買清單</summary>
+                    <div class="details-content">辛拉麵/農心泡麵、韓國海苔、蜂蜜奶油洋芋片
+韓國咖啡三合一、辣炒年糕醬、泡菜醬、面膜組合</div>
+                </details>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">19:00–19:30</div>
+                <div class="timeline-activity">回飯店取大行李</div>
+                <p class="timeline-desc">提著超市大戰利品搭計程車回飯店，在飯店門口領取寄放的大行李箱，直接在門口叫計程車，一起塞進後車廂。</p>
+                <span class="price-tag">計程車 Centum City→飯店 ₩8,000–12,000</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot purple"></div>
+                <div class="timeline-time">19:30→22:00</div>
+                <div class="timeline-activity">✈️ 計程車直奔金海機場 → 返台</div>
+                <p class="timeline-desc">週日晚上通常不塞車，車程約40-45分鐘，約20:15抵達機場（提前1.5-2小時，剛剛好）。在Spa Land已洗澡+換衣，機場完全不慌亂，優雅辦登機+托運行李+伴手禮紙箱。22:00上飛機，寶貝一路睡回台灣，大成功！</p>
+                <span class="badge badge-success">Jeju Air 7C6153 22:00起飛</span>
+                <span class="price-tag">計程車 飯店→金海機場 ₩30,000–45,000（約40-45分鐘）</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 美食清單頁籤 -->
+    <div id="food" class="tab-content">
+
+        <div class="section-title">🍲 經典必吃：豬肉湯飯</div>
+        <div class="card">
+            <div class="food-card-name">密陽血腸豬肉湯飯<span class="food-card-kr">밀양순대국밥／海雲台</span></div>
+            <p class="food-card-desc">24小時營業，海雲台最具代表性豬肉湯飯，湯頭濃郁，配料豐富（血腸+多種豬肉部位）。
+📌 必點：돼지국밥 豬肉湯飯（點清湯版）　📌 把白飯倒進湯裡，剪嫩豬肉給寶貝</p>
+            <span class="price-tag">₩10,000–13,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%80%EC%96%91%EC%88%9C%EB%8C%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">五福豬肉湯飯<span class="food-card-kr">오복돼지국밥／海雲台</span></div>
+            <p class="food-card-desc">口味濃厚又清爽，在地熟客回頭率高，24小時營業，任何時間都可去。
+📌 必點：순대국밥 血腸湯飯 或純豬肉湯飯　📌 辣度可調，可請店員不辣</p>
+            <span class="price-tag">₩10,000–13,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%98%A4%EB%B3%B5%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">嚴湧帛豬肉湯飯<span class="food-card-kr">엄용백돼지국밥／海雲台</span></div>
+            <p class="food-card-desc">湯頭清甜，是許多在地人早餐首選。📌 必點：돼지국밥 豬肉湯飯　📌 推薦清甜不辣版，寶貝很適合</p>
+            <span class="price-tag">₩10,000–13,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%97%84%EC%9A%A9%EB%B0%B1%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">松亭三代豬肉湯飯<span class="food-card-kr">송정삼대국밥／西面</span></div>
+            <p class="food-card-desc">西面排隊名店，湯頭濃郁不辣，代代傳承的秘方。📌 4歲半寶貝配飯吃超愛　📌 配料：豬肉片+泡菜+白飯完美組合</p>
+            <span class="price-tag">₩10,000–13,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%86%A1%EC%A0%95%EC%82%BC%EB%8C%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">水邊最高豬肉湯飯<span class="food-card-kr">수변최고돼지국밥／海雲台</span></div>
+            <p class="food-card-desc">海雲台沙灘附近，環境舒適。📌 必點：豬肉湯飯+蔥花　📌 推薦搭配생선전魚糕煎餅</p>
+            <span class="price-tag">₩10,000–12,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%88%98%EB%B3%80%EC%B5%9C%EA%B3%A0%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">永珍豬肉湯飯<span class="food-card-kr">영진돼지국밥／南區</span></div>
+            <p class="food-card-desc">南區代表，湯清味鮮，在地人口碑。📌 必點：純豬肉湯飯（불고기국밥）</p>
+            <span class="price-tag">₩10,000–12,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%98%81%EC%A7%84%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🥩 頂級美味：韓式烤肉</div>
+        <div class="card">
+            <div class="food-card-name">男子烤肉<span class="food-card-kr">고기굽는남자／西面</span></div>
+            <p class="food-card-desc">西面人氣烤肉店，肉質新鮮，炭火烤製。📌 必點：삼겹살五花肉／목살頸肉　📌 用生菜包肉+蒜片+醬料　📌 必配：韓國燒酒/啤酒</p>
+            <span class="price-tag">₩20,000–35,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EA%B3%A0%EA%B8%B0%EA%B5%BD%EB%8A%94%EB%82%A8%EC%9E%90" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">釜山豬肋排<span class="food-card-kr">부산쪽쪽갈비／西面</span></div>
+            <p class="food-card-desc">釜山特色帶骨豬肋排，甜鹹醬汁入味。📌 必點：양념갈비醬燒帶骨豬肋排　📌 啃骨頭的過癮感，必須體驗　📌 小孩可要求剪小塊</p>
+            <span class="price-tag">₩25,000–40,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B6%80%EC%82%B0%EC%AA%BD%EC%AA%BD%EA%B0%88%EB%B9%84" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">海田烤腸<span class="food-card-kr">해성막창집／海田</span></div>
+            <p class="food-card-desc">釜山最正宗的烤腸（막창）專門店，在地深夜食堂。📌 必點：막창豬大腸／곱창小腸　📌 配蒜片+芝麻油蘸醬+燒酒　⚠️ 建議成人嘗試，腸味較重</p>
+            <span class="price-tag">₩15,000–25,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9A%A9%EB%A7%89%EC%B0%BD" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">百花烤腸<span class="food-card-kr">백화양곱창／南浦</span></div>
+            <p class="food-card-desc">南浦洞知名烤腸，本地人深夜必去。📌 必點：양곱창牛胃+小腸混合　📌 份量十足，酒肉一流　📌 氛圍：熱鬧市場感，道地體驗</p>
+            <span class="price-tag">₩18,000–30,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%B1%ED%99%94%EC%96%91%EA%B3%B1%EC%B0%BD" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🐟 其他主食</div>
+        <div class="card">
+            <div class="food-card-name">古來思魚糕<span class="food-card-kr">고래사어묵／海雲台（全釜山多店）</span></div>
+            <p class="food-card-desc">釜山最知名魚糕品牌，必吃！📌 必點：어묵탕魚糕湯（免費喝湯！）　📌 各式串燒魚糕꼬치어묵　📌 寶貝最愛：方形不辣魚糕+年糕串떡꼬치</p>
+            <span class="price-tag">₩1,000–3,000/串</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EA%B3%A0%EB%9E%98%EC%82%AC%EC%96%B4%EC%96%B5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">大門家<span class="food-card-kr">대문가／新世界百貨Centum City B1</span></div>
+            <p class="food-card-desc">新世界百貨人氣韓式料理，午餐首選。📌 必點：갈비찜燉排骨／비빔밥拌飯　📌 套餐包含多種小菜，豐盛實在</p>
+            <span class="price-tag">₩15,000–30,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%8C%80%EB%AC%B8%EA%B0%80%20%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%84%BC%ED%8A%B8%EB%9F%BC" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">봉피양 平壤冷麵<span class="food-card-kr">봉피양／新世界百貨Centum City B1</span></div>
+            <p class="food-card-desc">正宗平壤冷麵，麵條Q彈，湯頭清甜微酸。📌 必點：물냉면水冷麵（推薦！）　📌 配料：牛肉片+半顆水煮蛋+黃瓜絲</p>
+            <span class="price-tag">₩15,000–22,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B4%89%ED%8F%89%EC%96%91%20%EC%8B%A0%EC%84%B8%EA%B3%84" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">31公分海鮮刀削麵<span class="food-card-kr">31cm해물칼국수／海雲台</span></div>
+            <p class="food-card-desc">視覺噱頭+美味兼具的海鮮刀削麵。📌 必點：31公分海鮮刀削麵（超長！）　📌 打卡：超長麵條必拍</p>
+            <span class="price-tag">₩12,000–15,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=31cm%ED%95%B4%EB%AC%BC%EC%B9%BC%EA%B5%AD%EC%88%98" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">李在模披薩<span class="food-card-kr">이재모피자／中區（總店）</span></div>
+            <p class="food-card-desc">釜山在地知名平價披薩，韓式獨特風味。📌 必點：招牌原味披薩（厚實酥脆麵團）　📌 甜鹹口味，跟義式不同但好吃</p>
+            <span class="price-tag">₩10,000–18,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%9D%B4%EC%9E%AC%EB%AA%A8%ED%94%BC%EC%9E%90" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🦪 鮑魚粥（機張限定）</div>
+        <div class="card">
+            <div class="food-card-name">機張末家<span class="food-card-kr">기장끝집／機張</span></div>
+            <p class="food-card-desc">機張港口人氣鮑魚粥，食材直送新鮮。📌 必點：전복죽鮑魚粥（翠綠色，鮑魚肝臟染色）　📌 米粒綿密濃稠，鮮甜無腥味</p>
+            <span class="price-tag">₩15,000–22,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EA%B8%B0%EC%9E%A5%EB%81%9D%EC%A7%91" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">大海鮑魚粥<span class="food-card-kr">바다전복죽／機張</span></div>
+            <p class="food-card-desc">機張另一家人氣鮑魚粥，可搭配刺身套餐。📌 必點：전복죽+전복회鮑魚粥+鮑魚刺身套餐　📌 海景用餐，視野佳</p>
+            <span class="price-tag">₩15,000–25,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%94%EB%8B%A4%EC%A0%84%EB%B3%B5%EC%A3%BD" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">☕ 咖啡廳 ／ 甜點</div>
+        <div class="card">
+            <div class="food-card-name">Broni 布朗尼咖啡<span class="food-card-kr">브로니／海雲台青沙浦</span></div>
+            <p class="food-card-desc">青沙浦海景咖啡廳，天空步道旁。📌 必點：브로니布朗尼（招牌甜點）　📌 手沖咖啡+海景絕配　📌 打卡：面向大海的落地窗座位</p>
+            <span class="price-tag">₩7,000–12,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B8%8C%EB%A1%9C%EB%8B%88%20%EC%B9%B4%ED%8E%98" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">Baguette Factory<span class="food-card-kr">바게트팩토리／田浦</span></div>
+            <p class="food-card-desc">田浦咖啡街排隊名店，現烤麵包香氣四溢。📌 必點：法棍麵包／奶油可頌　📌 早上去品項最齊全</p>
+            <span class="price-tag">₩4,000–8,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%94%EA%B2%8C%ED%8A%B8%ED%8C%A9%ED%86%A0%EB%A6%AC" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">Old Mansion 復古咖啡<span class="food-card-kr">올드맨션／西面田浦</span></div>
+            <p class="food-card-desc">西面復古風格咖啡廳，裝潢精緻網美必打。📌 必點：季節限定蛋糕（草莓/抹茶）　📌 打卡：歐洲小客廳風格</p>
+            <span class="price-tag">₩7,000–12,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%98%AC%EB%93%9C%EB%A7%A8%EC%85%98" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">설빙 雪冰<span class="food-card-kr">설빙／全釜山多店</span></div>
+            <p class="food-card-desc">韓國刨冰始祖，夏天必吃消暑聖品。📌 必點：딸기설빙草莓雪冰／인절미설빙黃豆粉麻糬雪冰　📌 份量超大，2-3人分食剛好</p>
+            <span class="price-tag">₩7,000–14,000（2-3人分）</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%84%A4%EB%B9%99" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">A Twosome Place<span class="food-card-kr">투썸플레이스／新世界百貨Centum City內</span></div>
+            <p class="food-card-desc">韓國知名咖啡甜點連鎖，質感好。📌 必點：딸기생크림케이크草莓生鮮奶油蛋糕　📌 位置：百貨內就有，逛街間休息</p>
+            <span class="price-tag">₩7,000–15,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%ED%88%AC%EC%8D%B8%ED%94%8C%EB%9E%98%EC%9D%B4%EC%8A%A4%20%EC%84%BC%ED%8A%B8%EB%9F%BC%EC%84%9C%ED%8B%B0" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🍯 糖餅</div>
+        <div class="card">
+            <div class="food-card-name">海雲台名品糖餅<span class="food-card-kr">해운대명품호떡／海雲台</span></div>
+            <p class="food-card-desc">海雲台最排隊的糖餅，釜山必吃！📌 必點：씨앗호떡種子糖餅　📌 黑糖+葵瓜子+花生內餡，外皮酥脆　⚠️ 剛起鍋燙口，等一下再咬</p>
+            <span class="price-tag">₩2,000–2,500/個</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9A%B4%EB%8C%80%EB%AA%85%ED%92%88%ED%98%B8%EB%8D%95" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">元祖糖餅（南浦）<span class="food-card-kr">아저씨씨앗호떡／南浦BIFF廣場旁</span></div>
+            <p class="food-card-desc">南浦洞BIFF廣場旁的糖餅始祖。📌 必點：씨앗호떡（種子比例更高，更酥脆）　📌 比海雲台版更酥，甜度適中</p>
+            <span class="price-tag">₩2,000–2,500/個</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=BIFF%EA%B4%91%EC%9E%A5%20%ED%98%B8%EB%8D%95" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🥣 早餐／輕食</div>
+        <div class="card">
+            <div class="food-card-name">本粥 Bonjuk<span class="food-card-kr">본죽／海雲台（全釜山多店）</span></div>
+            <p class="food-card-desc">韓國人氣粥品連鎖，健康清淡暖胃首選。📌 必點：전복죽鮑魚粥／야채죽蔬菜粥／해물죽海鮮粥　不辣，老少皆宜，比湯飯更清爽易消化</p>
+            <span class="price-tag">₩8,000–13,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B3%B8%EC%A3%BD" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">濟州家 Jejuga<span class="food-card-kr">제주가／海雲台</span></div>
+            <p class="food-card-desc">濟州島特色料理餐廳，提供在地食材早午餐。📌 必點：제주흑돼지濟州黑豬料理／제주갈치조림濟州白帶魚燉煮</p>
+            <span class="price-tag">₩12,000–25,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%A0%9C%EC%9C%A0%EA%B0%80" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">EGG DROP<span class="food-card-kr">에그드랍／海雲台（全釜山多店）</span></div>
+            <p class="food-card-desc">韓國超人氣蛋三明治連鎖，排隊名店！📌 必點：Original原味蛋三明治／아보카도牛油果款（IG打卡首選）　好吃又好拍，早餐必試</p>
+            <span class="price-tag">₩6,000–9,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%97%90%EA%B7%B8%EB%8B%9C%EB%9E%99" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🍞 特色麵包店</div>
+        <div class="card">
+            <div class="food-card-name">세탁소빵집 洗衣房麵包坊<span class="food-card-kr">세탁소빵집／海雲台/釜山市區</span></div>
+            <p class="food-card-desc">釜山超夯網紅麵包店，外觀設計像洗衣店超有趣！📌 必點：소금빵鹽可頌／크림빵奶油麵包　排隊名店，建議早點去，常常賣完</p>
+            <span class="price-tag">₩3,000–6,000/個</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%84%B8%ED%83%81%EC%86%8C%EB%B9%B5%EC%A7%91" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">BREDDANCO<span class="food-card-kr">브레댄코／釜山市區</span></div>
+            <p class="food-card-desc">韓國精緻烘焙坊，注重職人工藝。📌 必點：크루아상可頌系列／치즈빵起司麵包</p>
+            <span class="price-tag">₩4,000–8,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=BREDDANCO" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">BAKERS REPUBLIC<span class="food-card-kr">釜山市區</span></div>
+            <p class="food-card-desc">釜山在地職人麵包坊，天然酵母慢發酵。📌 必點：천연효모빵天然酵母歐式麵包／季節限定甜點</p>
+            <span class="price-tag">₩5,000–12,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=BAKERS%20REPUBLIC%20BUSAN" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+        <div class="card">
+            <div class="food-card-name">Standard Bread<span class="food-card-kr">釜山市區</span></div>
+            <p class="food-card-desc">釜山人氣烘焙坊，簡約工業風格超有質感。📌 必點：두꺼운식빵招牌厚片吐司／特色三明治　口碑極佳</p>
+            <span class="price-tag">₩5,000–10,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Standard%20Bread%20Busan" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+    </div>
+
+    <!-- 4. 票券與景點介紹頁籤 -->
+    <div id="tickets" class="tab-content">
+
+        <div class="card" style="background: linear-gradient(135deg, var(--busan-blue-bg), var(--coral-orange-bg)); border-color: var(--busan-blue);">
+            <p><strong>💡 什麼是 BIG 3 Pass？</strong></p>
+            <p style="font-size: 0.82rem; color:var(--text-muted); margin-top:6px;">購買一張Pass可免費兌換「1個A區大景點 + 2個B區小景點」，共3個景點，適合安排門票較貴的景點使用，省下最多錢。A區大點限選1個（最貴的），B區小點可選2個，不限組合。購買方式：Klook/KKday/現場購買均可，建議出發前線上購，通常有優惠。</p>
+            <div style="margin-top:10px;">
+                <span class="badge badge-success">✅ Pass 1：Klook cocochou79@gmail.com</span>
+                <span class="badge badge-success">✅ Pass 2：Klook 0986320612（訂單#823）</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">✅ 本次行程 BIG 3 Pass 最優分配方案</div>
+            <div class="big3-row">
+                <div class="big3-num">1</div>
+                <div style="flex:1;">
+                    <strong>機張 Skyline Luge 斜坡滑車</strong><span style="font-size:0.78rem;color:var(--text-muted);"> ／ A區大點</span><br>
+                    <span style="font-size:0.78rem; color:var(--text-muted);">7/2（四）早上09:30｜到售票窗口出示Pass，選「A區景點」→ 另外現場補購兒童共乘券₩12,000</span>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                    <div style="font-size:0.8rem; color:var(--text-light); text-decoration:line-through;">₩30,000</div>
+                    <span class="badge badge-success" style="margin:0;">FREE</span>
+                </div>
+            </div>
+            <div class="big3-row">
+                <div class="big3-num">2</div>
+                <div style="flex:1;">
+                    <strong>Museum 1 數位媒體藝術館</strong><span style="font-size:0.78rem;color:var(--text-muted);"> ／ B區小點</span><br>
+                    <span style="font-size:0.78rem; color:var(--text-muted);">7/2（四）下午14:00｜選「B區景點」→ 兒童票₩13,000需另外現場購買</span>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                    <div style="font-size:0.8rem; color:var(--text-light); text-decoration:line-through;">₩18,000</div>
+                    <span class="badge badge-success" style="margin:0;">FREE</span>
+                </div>
+            </div>
+            <div class="big3-row">
+                <div class="big3-num">3</div>
+                <div style="flex:1;">
+                    <strong>松島海上纜車</strong><span style="font-size:0.78rem;color:var(--text-muted);"> ／ B區小點</span><br>
+                    <span style="font-size:0.78rem; color:var(--text-muted);">7/3（五）早上09:30｜選「B區景點」→ 建議選透明水晶車廂（Crystal Car）來回</span>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                    <div style="font-size:0.8rem; color:var(--text-light); text-decoration:line-through;">₩20,000</div>
+                    <span class="badge badge-success" style="margin:0;">FREE</span>
+                </div>
+            </div>
+            <div style="background:var(--notion-green-bg); border-radius:8px; padding:10px; margin-top:10px; text-align:center;">
+                <span style="font-size:0.85rem; color:var(--notion-green); font-weight:700;">🎉 合計省下 ₩68,000/人（約台幣 $1,600/人）</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">💳 其他景點 — 單獨購票</div>
+            <table>
+                <tbody>
+                <tr><th>景點</th><th>票價</th><th>使用日</th></tr>
+                <tr><td>Club D Oasis 汗蒸幕</td><td>₩15,000–25,000/人</td><td>7/2 晚上</td></tr>
+                <tr><td>海岸列車（去程）尾浦→青沙浦</td><td>₩7,000/人</td><td>7/1 10:10</td></tr>
+                <tr><td>松島龍宮天空步道</td><td>₩1,000/人（4歲半免費！）</td><td>7/3 10:00</td></tr>
+                <tr><td>Spa Land 汗蒸幕</td><td>₩18,000–25,000/人</td><td>7/5 13:30</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">💡 建議 Club D Oasis 與 Spa Land 在台灣出發前先用 Klook/KKday 線上購，比現場價便宜約10-20%。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🆓 免費景點一覽</div>
+            <table>
+                <tbody>
+                <tr><th>景點</th><th>行程日</th><th>備註</th></tr>
+                <tr><td>海雲台海水浴場</td><td>7/1 & 7/5</td><td>無需購票，直接走進去</td></tr>
+                <tr><td>廣安里無人機秀</td><td>7/4（六）20:00</td><td>週六限定夏季場次</td></tr>
+                <tr><td>影島大橋開橋秀</td><td>7/4（六）14:00</td><td>週末限定，站路邊看即可</td></tr>
+                <tr><td>樂天百貨光復店水舞秀</td><td>7/4 13:00</td><td>每逢整點，約10-15分鐘</td></tr>
+                <tr><td>樂天百貨展望台</td><td>7/4</td><td>11-13F，育嬰室完善</td></tr>
+                <tr><td>青沙浦天空步道／平交道</td><td>7/1</td><td>步道約200公尺</td></tr>
+                <tr><td>岩南公園天空花園</td><td>7/3</td><td>恐龍模型裝置</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-title">🗺️ 精選景點圖卡</div>
+        <div class="section-sub">圖片區塊已預留，之後可自行替換為實拍照片</div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🚂 海岸列車（Beach Train）</span><span style="font-size:0.7rem; color:#B0B0B0;">尺寸建議16:9</span></div>
+            <p><strong>海岸列車（Beach Train）</strong><span class="food-card-kr">海雲台藍線公園／7/1</span></p>
+            <p class="food-card-desc">沿海觀光列車，從尾浦站出發，全排座位面向大海，景色一路開闊。去程搭到青沙浦，回程搭天空膠囊不走回頭路。</p>
+            <span class="price-tag">₩7,000/人（現場）｜單程約15-20分鐘</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🚡 天空膠囊列車</span></div>
+            <p><strong>天空膠囊列車（Sky Capsule）</strong><span class="food-card-kr">海雲台藍線公園／7/1已預訂</span></p>
+            <p class="food-card-desc">獨立彩色小包廂沿海岸線緩慢行進，11:00-11:30是順光時段，海景特別美。車廂內有小電扇，速度緩慢老少皆宜。</p>
+            <span class="badge badge-success">✅ 已預訂 ₩55,000/3人</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>📸 灌籃高手平交道</span></div>
+            <p><strong>灌籃高手平交道</strong><span class="food-card-kr">青沙浦／7/1</span></p>
+            <p class="food-card-desc">激似鎌倉高校前的平交道，等彩色天空膠囊列車經過時拍攝。韓版鎌倉打卡點，彩色列車+大海背景，構圖絕美。</p>
+            <span class="price-tag">免費｜拍照約10-15分鐘</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🛷 Skyline Luge 機張</span></div>
+            <p><strong>Skyline Luge 機張斜坡滑車</strong><span class="food-card-kr">機張／7/2</span></p>
+            <p class="food-card-desc">搭吊椅上山後，坐特製滑車從山頂滑下，速度自控，大人抱小孩共乘安全刺激。09:30開園平日完全不排隊。</p>
+            <span class="badge badge-success">✅ BIG3 Pass A區（原價₩30,000）</span>
+            <span class="badge badge-orange">兒童共乘₩12,000</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🎨 Museum 1 數位媒體藝術館</span></div>
+            <p><strong>Museum 1 數位媒體藝術館</strong><span class="food-card-kr">Centum City／7/2</span></p>
+            <p class="food-card-desc">上億LED地板+巨型螢幕沉浸式光影藝術，對寶貝像走進巨大萬花筒。下午2-4點入內最消暑避開烈日，緊鄰新世界百貨。</p>
+            <span class="badge badge-success">✅ BIG3 Pass B區（原價₩18,000）</span>
+            <span class="badge badge-orange">兒童₩13,000另購</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>♨️ Club D Oasis 汗蒸幕</span></div>
+            <p><strong>Club D Oasis 汗蒸幕</strong><span class="food-card-kr">Centum City附近／7/2晚上</span></p>
+            <p class="food-card-desc">釜山著名汗蒸幕，木桶浴/岩盤浴/休息室。滑完車逛完街，晚上放鬆最適合，4歲半寶貝可入場。</p>
+            <span class="price-tag">Klook/KKday線上購 約₩15,000–25,000</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🚠 松島海上纜車</span></div>
+            <p><strong>松島海上纜車</strong><span class="food-card-kr">松島／7/3</span></p>
+            <p class="food-card-desc">透明水晶車廂跨海飛越，低頭看腳下海水。週五上午排隊時間最短黃金時段。含龍宮步道+岩南公園絕配行程。</p>
+            <span class="badge badge-success">✅ BIG3 Pass B區（原價₩20,000）</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>松島龍宮天空步道</span></div>
+            <p><strong>松島龍宮天空步道</strong><span class="food-card-kr">松島（下纜車2分鐘）／7/3</span></p>
+            <p class="food-card-desc">懸崖鏤空鐵網步道直視腳下海浪，牽著寶貝像海上大冒險。⚠️ 推車寄放纜車站。</p>
+            <span class="price-tag">成人₩1,000｜7歲以下免費</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🦕 岩南公園天空花園</span></div>
+            <p><strong>岩南公園天空花園</strong><span class="food-card-kr">松島（纜車對岸）／7/3</span></p>
+            <p class="food-card-desc">巨型恐龍模型裝置（會發聲+擺動），噴泉廣場寶貝跑跑放電。散步約30-45分鐘。</p>
+            <span class="badge badge-success">免費</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🎨 甘川洞文化村</span></div>
+            <p><strong>甘川洞文化村</strong><span class="food-card-kr">甘川洞／7/4</span></p>
+            <p class="food-card-desc">彩色小屋山城，韓國版馬丘比丘。早上09:00到，避人潮順光拍照最美。部分路段有坡度，主要步道全程約1.5–2公里。</p>
+            <span class="price-tag">免費（部分展覽₩2,000–5,000）</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🌉 影島大橋開橋秀</span></div>
+            <p><strong>影島大橋開橋秀</strong><span class="food-card-kr">南浦洞／7/4（週六）</span></p>
+            <p class="food-card-desc">韓國唯一跨海開合橋，週末14:00準時，樂天百貨側門步行1分鐘。橋身緩緩升起，氣勢磅礴。</p>
+            <span class="badge badge-success">免費　週末限定14:00</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🏙️ 樂天百貨展望台（光復店）</span></div>
+            <p><strong>樂天百貨展望台（光復店）</strong><span class="food-card-kr">南浦洞／7/4</span></p>
+            <p class="food-card-desc">頂樓11-13F免費開放，360度俯瞰釜山港+影島大橋+釜山塔。育嬰室完善，下午光線清晰。</p>
+            <span class="badge badge-success">免費</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>🚁 廣安里無人機秀</span></div>
+            <p><strong>廣安里無人機秀</strong><span class="food-card-kr">廣安里沙灘／7/4（週六）</span></p>
+            <p class="food-card-desc">週六限定3D無人機光影表演，數百台無人機在廣安大橋夜景前變幻圖案。20:00場最推薦，3D圖案媲美高科技煙火。</p>
+            <span class="badge badge-success">免費</span>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder"><span>♨️ Spa Land 汗蒸幕</span></div>
+            <p><strong>Spa Land 汗蒸幕</strong><span class="food-card-kr">新世界百貨Centum City內／7/5</span></p>
+            <p class="food-card-desc">全釜山最高級汗蒸幕，直接從新世界百貨進入。「羊角頭」全家福必拍！上飛機前洗澡換衣，寶貝一路睡回台灣。</p>
+            <span class="price-tag">Klook/KKday線上購 約₩18,000–25,000</span>
+        </div>
+
+        <div class="section-title">🌙 夜間景點＆關門時間</div>
+        <div class="card">
+            <div class="night-row">
+                <div class="night-icon">🏖️</div>
+                <div><strong>海雲台沙灘</strong> ｜ 24小時開放<br><span style="font-size:0.8rem;color:var(--text-muted);">7/1｜傍晚16:30後最舒服，海風涼爽</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🏪</div>
+                <div><strong>海雲台傳統市場</strong> ｜ 約22:00–23:00<br><span style="font-size:0.8rem;color:var(--text-muted);">7/1｜傍晚攤位全開，最熱鬧</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">♨️</div>
+                <div><strong>Club D Oasis 汗蒸幕</strong> ｜ 約24:00（午夜）<br><span style="font-size:0.8rem;color:var(--text-muted);">7/2｜晚上18:30後進去最舒服</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🏬</div>
+                <div><strong>新世界百貨 Centum City</strong> ｜ 20:30閉店<br><span style="font-size:0.8rem;color:var(--text-muted);">7/2 & 7/5｜閉店前30分鐘停止進場</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🏬</div>
+                <div><strong>樂天東釜山 Outlet</strong> ｜ 21:00閉店<br><span style="font-size:0.8rem;color:var(--text-muted);">7/2｜週末可能延長至22:00</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🚠</div>
+                <div><strong>松島海上纜車</strong> ｜ 21:00（夜間班次）<br><span style="font-size:0.8rem;color:var(--text-muted);">7/3｜夜晚跨海看釜山燈火，另有風情</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🚇</div>
+                <div><strong>西面地下街</strong> ｜ 約22:00–23:00<br><span style="font-size:0.8rem;color:var(--text-muted);">7/3｜傍晚逛最涼爽</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🌉</div>
+                <div><strong>影島大橋開橋秀</strong> ｜ 14:00（橋夜晚有打燈）<br><span style="font-size:0.8rem;color:var(--text-muted);">7/4｜週末14:00開橋秀，夜晚燈光也美</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🏬</div>
+                <div><strong>樂天百貨光復店</strong> ｜ 20:00閉店（展望台同步）<br><span style="font-size:0.8rem;color:var(--text-muted);">7/4｜週末可能延長</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🛒</div>
+                <div><strong>廣安里 Millac the Market</strong> ｜ 約21:00–22:00<br><span style="font-size:0.8rem;color:var(--text-muted);">7/4｜夜晚海景+燈光，最迷人</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🌃</div>
+                <div><strong>廣安里沙灘無人機秀</strong> ｜ 20:00 & 22:00表演<br><span style="font-size:0.8rem;color:var(--text-muted);">7/4（週六）｜★20:00第一場最推薦，夏季限定，下雨取消</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">🛒</div>
+                <div><strong>樂天超市 Centum City</strong> ｜ 23:00閉店<br><span style="font-size:0.8rem;color:var(--text-muted);">7/5｜退稅服務至22:30左右</span></div>
+            </div>
+            <div class="night-row">
+                <div class="night-icon">♨️</div>
+                <div><strong>Spa Land 汗蒸幕</strong> ｜ 24:00（午夜）<br><span style="font-size:0.8rem;color:var(--text-muted);">7/5｜傍晚13:30進去，悠閒泡到出發，最後入場通常23:00</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 購物景點頁籤 -->
+    <div id="shopping" class="tab-content">
+
+        <div class="card">
+            <div class="food-card-name">🏬 新世界百貨 Centum City 店<span class="food-card-kr">7/2 & 7/5</span></div>
+            <p class="food-card-desc">金氏世界紀錄「世界最大百貨」，推車暢行零阻礙，地下美食街超澎湃。緊鄰Museum 1，一區完成購物+藝術。
+📌 LV/Chanel/Gucci等國際大牌　📌 韓國設計師服飾（Ader Error/87MM）
+📌 MAC/雪花秀/后 頂級韓系美妝　📌 地下甜點街：설빙雪冰/A Twosome Place　📌 大門家/봉피양餐廳午餐首選</p>
+            <span class="price-tag">美妝₩30,000起｜甜點₩5,000–15,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%84%BC%ED%8A%B8%EB%9F%BC%EC%84%9C%ED%8B%B0" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🏬 樂天東釜山 Outlet<span class="food-card-kr">機張／7/2</span></div>
+            <p class="food-card-desc">希臘風情小鎮外觀的超大Outlet，鄰近Skyline Luge，滑完車直接逛，折扣通常7-8折。
+📌 Nike/Adidas/New Balance大折扣　📌 MCM/Coach/Furla精品折扣
+📌 MLB棒球帽（韓國超流行）　📌 美食街：松亭家午餐（可搭配7/2行程）</p>
+            <span class="price-tag">運動品牌₩50,000起｜精品₩200,000起</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%A1%AF%EB%8D%B0%20%EC%84%9C%EB%85%80%EB%B6%80%EC%82%B0%20%EC%9C%84%EC%9D%84%EB%A6%BD" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🏬 樂天百貨光復店<span class="food-card-kr">南浦洞／7/4</span></div>
+            <p class="food-card-desc">南浦洞地標百貨，頂樓有免費360度展望台（必去！），影島大橋開橋秀後步行1分鐘。
+📌 OLIVE YOUNG品項齊全　📌 Innisfree/Laneige/COSRX
+📌 地下美食街釜山特色小吃　📌 頂樓展望台（免費+育嬰室）</p>
+            <span class="price-tag">美妝₩15,000起｜服飾₩30,000起</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%A1%AF%EB%8D%B0%EB%B0%B1%ED%99%94%EC%A0%90%20%EA%B4%91%EB%B3%B5%EC%A0%90" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🚇 南浦洞地下街 &amp; 光復路商店街<span class="food-card-kr">南浦洞／7/4</span></div>
+            <p class="food-card-desc">釜山最熱鬧的傳統商業區，地下街冷氣超強，雨天大太陽最佳避暑。BIFF廣場必去吃元祖糖餅。
+📌 光復路：韓系平價服飾/包包/鞋子　📌 南浦洞地下街：飾品/帽子/文具
+📌 BIFF廣場元祖糖餅（씨앗호떡）必吃！　📌 Innisfree/Etude美妝店林立</p>
+            <span class="price-tag">服飾₩15,000–40,000｜糖餅₩2,000/個</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5%20%EB%82%A8%ED%8F%AC%EB%8F%99" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🚇 西面地下街 &amp; 地面時裝街<span class="food-card-kr">西面／7/3</span></div>
+            <p class="food-card-desc">釜山最大地下商圈，數百間商家，地面時裝街是釜山最潮流的戶外購物街。NC百貨周邊聚集各大潮流品牌旗艦店。
+📌 西面地下街：平價韓系服飾/包包/飾品　📌 OLIVE YOUNG旗艦店（品項最齊全之一）
+📌 ARTBOX文具雜貨（小孩最愛）　📌 Baskin Robbins 31（帶小孩必去）</p>
+            <span class="price-tag">服飾₩10,000–50,000｜美妝₩10,000起｜文具₩3,000起</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EB%A9%B4%EC%97%AD%20%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🏪 海雲台傳統市場<span class="food-card-kr">海雲台／7/1</span></div>
+            <p class="food-card-desc">飯店步行可達的在地市場，傍晚攤位全開，氣氛最熱鬧。外帶食物回飯店吹冷氣最舒服。
+📌 韓式原味炸雞外帶（不辣款）　📌 黑糖堅果糖餅（甜滋滋）
+📌 海鮮蔥餅（파전）配馬格利　📌 各式海鮮小吃</p>
+            <span class="price-tag">炸雞₩20,000–30,000｜糖餅₩2,000/個｜蔥餅₩10,000–15,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9C%A0%EB%8C%80%EC%9D%8C%EB%82%A0%EC%A0%84%ED%86%B5%EC%83%9C%EC%9E%A5" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🛒 廣安里 Millac the Market<span class="food-card-kr">廣安里／7/4</span></div>
+            <p class="food-card-desc">廣安里海邊的紅磚建築潮流市集，非傳統市場，走文青設計風，面海石階廣場，邊逛邊看海。
+📌 韓國獨立設計師品牌服飾　📌 文創選品/手工藝品
+📌 精品咖啡廳（手沖/特調）　📌 海景石階最佳打卡點</p>
+            <span class="price-tag">咖啡₩6,000–10,000｜文創₩10,000起</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%B0%80%EB%9D%BD%EB%8D%94%EB%A7%88%EC%BC%93" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🛒 樂天超市 Centum City 店<span class="food-card-kr">7/5（終極掃貨）</span></div>
+            <p class="food-card-desc">回程前終極伴手禮戰場，超市提供免費紙箱+膠帶直接裝箱，憑護照現場辦即時退稅。
+📌 辛拉麵/農心各式泡麵 ₩1,000–2,000/包　📌 韓國海苔（김）₩5,000–15,000/盒
+📌 蜂蜜奶油洋芋片/黑糖餅乾　📌 韓國三合一咖啡/自動售貨機咖啡
+📌 辣炒年糕醬/泡菜醬　📌 面膜組合（可退稅）　📌 燒酒/馬格利（伴手禮首選）</p>
+            <span class="price-tag">退稅門檻₩30,000起（憑護照現場辦）</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EB%A1%AF%EB%8D%B0%EB%A7%88%ED%8A%B8%20%EC%84%BC%ED%8A%B8%EB%9F%BC%EC%8B%9C%ED%8B%B0" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">💄 OLIVE YOUNG 올리브영<span class="food-card-kr">全釜山多店／各天</span></div>
+            <p class="food-card-desc">韓國最大美妝連鎖，CP值超高，西面旗艦店品項最完整，建議出發前列清單再去掃。</p>
+            <details>
+                <summary>💄 必買清單</summary>
+                <div class="details-content">📌 護膚必買：COSRX痘痘貼/保濕面膜、Some By Mi奇蹟系列、ROUND LAB白樺水保濕、Numbuzin玻尿酸精華、isntree肌膚屏障系列
+📌 彩妝必買：rom&nd唇釉/眼影、3CE多色眼影/氣墊
+📌 防曬必買：Skin1004 / ANUA 防曬霜</div>
+            </details>
+            <span class="price-tag">面膜₩15,000–30,000｜精華₩25,000–80,000｜防曬₩15,000–30,000</span>
+        </div>
+    </div>
+
+    <!-- 6. 預算總覽頁籤 -->
+    <div id="budget" class="tab-content">
+        <div class="callout">
+            <div class="callout-emoji">💱</div>
+            <div><strong>匯率參考：</strong>₩1,000 ≈ TWD 23.5　｜　實際刷卡匯率以銀行當日為準</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">✅ 在台已付款項目（共 TWD 46,531）</div>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th>說明</th><th class="text-right">金額</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>✈️ 去程機票</td><td>EASTAR JET ZE988 TPE→PUS／3人</td><td class="text-right">TWD 15,075</td></tr>
+                    <tr><td>✈️ 回程機票</td><td>Jeju Air 7C6153／訂票代碼KGMM2H／3人</td><td class="text-right">TWD 15,277</td></tr>
+                    <tr><td>🏨 飯店4晚</td><td>Hound Garden &amp; Terrace Hotel</td><td class="text-right">TWD 13,240</td></tr>
+                    <tr><td>🚡 天空膠囊列車</td><td>7/1 青沙浦→尾浦／3人</td><td class="text-right">TWD 1,293</td></tr>
+                    <tr><td>🎫 BIG 3 Pass ×2</td><td>Klook購買／2大人</td><td class="text-right">TWD 1,646</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="2">已付合計</td><td class="text-right">TWD 46,531</td></tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🚕 計程車費（預估，共 TWD 7,391）</div>
+            <table>
+                <thead><tr><th>日期</th><th>路線</th><th class="text-right">費用</th></tr></thead>
+                <tbody>
+                    <tr><td>7/1 抵達</td><td>金海機場→海雲台飯店</td><td class="text-right">₩35,000</td></tr>
+                    <tr><td>7/1</td><td>飯店周邊短程（×2趟）</td><td class="text-right">₩8,000</td></tr>
+                    <tr><td>7/2</td><td>飯店→機張</td><td class="text-right">₩17,500</td></tr>
+                    <tr><td>7/2</td><td>機張→Centum City</td><td class="text-right">₩22,500</td></tr>
+                    <tr><td>7/2</td><td>Centum City→Club D Oasis</td><td class="text-right">₩6,500</td></tr>
+                    <tr><td>7/2</td><td>Club D Oasis→飯店</td><td class="text-right">₩10,000</td></tr>
+                    <tr><td>7/3</td><td>飯店→松島海上纜車</td><td class="text-right">₩35,000</td></tr>
+                    <tr><td>7/3</td><td>松島→南浦洞/札嘎其</td><td class="text-right">₩12,500</td></tr>
+                    <tr><td>7/3</td><td>南浦洞→西面</td><td class="text-right">₩12,500</td></tr>
+                    <tr><td>7/3</td><td>西面→飯店</td><td class="text-right">₩25,000</td></tr>
+                    <tr><td>7/4</td><td>飯店→甘川洞</td><td class="text-right">₩30,000</td></tr>
+                    <tr><td>7/4</td><td>甘川洞→南浦洞</td><td class="text-right">₩12,500</td></tr>
+                    <tr><td>7/4</td><td>南浦洞→廣安里</td><td class="text-right">₩17,500</td></tr>
+                    <tr><td>7/4</td><td>廣安里→飯店</td><td class="text-right">₩12,500</td></tr>
+                    <tr><td>7/5</td><td>飯店→Centum City</td><td class="text-right">₩10,000</td></tr>
+                    <tr><td>7/5</td><td>Centum City→飯店（取行李）</td><td class="text-right">₩10,000</td></tr>
+                    <tr><td>7/5 返台</td><td>飯店→金海機場</td><td class="text-right">₩37,500</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="2">計程車合計</td><td class="text-right">₩314,500</td></tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🎟️ 景點門票（韓國現場費用，共 TWD 4,018）</div>
+            <table>
+                <thead><tr><th>日期</th><th>景點</th><th class="text-right">費用</th></tr></thead>
+                <tbody>
+                    <tr><td>7/1</td><td>🚂 海岸列車 去程</td><td class="text-right">₩21,000</td></tr>
+                    <tr><td>7/2</td><td>🛷 Skyline Luge 兒童共乘券<br><span style="font-size:0.72rem;color:var(--text-light);">成人已用BIG3 Pass免費</span></td><td class="text-right">₩12,000</td></tr>
+                    <tr><td>7/2</td><td>🎨 Museum 1 兒童票<br><span style="font-size:0.72rem;color:var(--text-light);">成人已用BIG3 Pass免費</span></td><td class="text-right">₩13,000</td></tr>
+                    <tr><td>7/2</td><td>♨️ Club D Oasis 汗蒸幕／3人</td><td class="text-right">₩60,000</td></tr>
+                    <tr><td>7/3</td><td>松島龍宮天空步道／2大人<br><span style="font-size:0.72rem;color:var(--text-light);">兒童4歲半免費！</span></td><td class="text-right">₩2,000</td></tr>
+                    <tr><td>7/5</td><td>♨️ Spa Land 汗蒸幕／3人</td><td class="text-right">₩63,000</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="2">門票合計</td><td class="text-right">₩171,000</td></tr>
+                </tfoot>
+            </table>
+            <div class="callout green" style="margin-top:10px; margin-bottom:0;">
+                <div class="callout-emoji">💡</div>
+                <div style="font-size:0.82rem;">BIG 3 Pass 節省：₩136,000（TWD 3,196）— Skyline Luge ₩60,000 + Museum 1 ₩36,000 + 松島纜車 ₩40,000（2大人）</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🍽️ 餐飲費（3人 × 5天預估，共 TWD 16,309）</div>
+            <table>
+                <thead><tr><th>日期</th><th>主題</th><th class="text-right">小計</th></tr></thead>
+                <tbody>
+                    <tr><td>7/1</td><td>豬肉湯飯+魚糕午餐+市場晚餐</td><td class="text-right">₩118,000</td></tr>
+                    <tr><td>7/2</td><td>輕食早餐+新世界百貨午餐+主街晚餐+汗蒸幕點心</td><td class="text-right">₩156,000</td></tr>
+                    <tr><td>7/3</td><td>輕食早餐+南浦洞午餐+西面晚餐+咖啡甜點</td><td class="text-right">₩156,000</td></tr>
+                    <tr><td>7/4</td><td>輕食早餐+樂天百貨午餐+廣安里晚餐+糖餅點心</td><td class="text-right">₩138,000</td></tr>
+                    <tr><td>7/5</td><td>魚糕早餐+新世界百貨午餐+SpaLand輕食</td><td class="text-right">₩126,000</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="2">餐飲合計（5天）</td><td class="text-right">₩694,000</td></tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🛍️ 購物預算（估算，共 TWD 6,815）</div>
+            <table>
+                <thead><tr><th>類別</th><th>說明</th><th class="text-right">KRW（保守估）</th></tr></thead>
+                <tbody>
+                    <tr><td>💄 OLIVE YOUNG 美妝</td><td>COSRX/SomByMi/ROUNDLAB等／2人合購</td><td class="text-right">₩100,000</td></tr>
+                    <tr><td>👗 服飾/百貨/地下街</td><td>西面+樂天+新世界</td><td class="text-right">₩80,000</td></tr>
+                    <tr><td>🛒 樂天超市伴手禮</td><td>泡麵/海苔/零食/醬料／可退稅</td><td class="text-right">₩80,000</td></tr>
+                    <tr><td>🎁 雜支</td><td>文具/小物/超商飲料</td><td class="text-right">₩30,000</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="2">購物小計（保守估）</td><td class="text-right">₩290,000</td></tr>
+                </tfoot>
+            </table>
+            <p style="font-size:0.74rem; color:var(--text-light); margin-top:8px;">⚠️ 購物金額僅保守估算，實際依個人習慣差異極大，可依喜好 ×2 ×3</p>
+        </div>
+
+        <div class="budget-grand">
+            <div style="font-size:0.8rem; opacity:0.85; margin-bottom:10px;">📊 3人行程總預算</div>
+            <div class="row"><span>✅ 已付款合計（機票+飯店+天空膠囊+BIG3 Pass）</span><span><strong>TWD 46,531</strong></span></div>
+            <div class="row"><span>🇰🇷 在韓花費合計（交通+門票+餐飲+購物）</span><span><strong>TWD 34,533</strong></span></div>
+            <div class="total">
+                <div>
+                    <div style="font-size:0.95rem; font-weight:700;">💰 3人總預算</div>
+                    <div style="font-size:0.78rem; opacity:0.8; margin-top:2px;">👤 每人平均 TWD 27,021</div>
+                </div>
+                <div class="amt">TWD 81,064</div>
+            </div>
+        </div>
+        <p style="font-size:0.72rem; color:var(--text-light); margin-top:10px; text-align:center;">⚠️ 匯率₩1,000≈TWD23.5｜已付款項不重複計入在韓花費</p>
+    </div>
+
+</div>
+
+<div class="footer-note">🌊 釜山海風五日遊隨身手冊 ｜ 2026.07.01–07.05 ｜ Made with ❤️ for our family trip</div>
+
+<div class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+    function switchMainTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        if (event && event.currentTarget) event.currentTarget.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchDayTab(dayNum) {
+        for (let i = 1; i <= 5; i++) {
+            let el = document.getElementById('day' + i);
+            if (el) el.style.display = 'none';
+            let btn = document.getElementById('btn-d' + i);
+            if (btn) btn.classList.remove('active');
         }
-    </script>
+        document.getElementById('day' + dayNum).style.display = 'block';
+        document.getElementById('btn-d' + dayNum).classList.add('active');
+    }
+
+    function goToDay(dayNum) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('detail').classList.add('active');
+        document.querySelectorAll('.main-nav .nav-btn')[1].classList.add('active');
+        switchDayTab(dayNum);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', function () {
+        const btn = document.getElementById('scrollTopBtn');
+        if (window.scrollY > 400) btn.classList.add('show');
+        else btn.classList.remove('show');
+    });
+</script>
+
 </body>
 </html>
