@@ -212,6 +212,23 @@
         font-weight: 500;
         border: 1px dashed #D3D1CB;
         gap: 4px;
+        overflow: hidden;
+    }
+    .img-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+    }
+    .img-placeholder .fallback {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        width: 100%;
+        height: 100%;
     }
 
     /* 精緻 Badge 標籤 */
@@ -558,6 +575,29 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Hound+Garden+Terrace+Hotel+Haeundae" target="_blank" class="map-btn">📍 Google Maps 開啟導航</a>
         </div>
 
+        <div class="card" style="background: linear-gradient(135deg, var(--busan-blue-bg), #fff); border-color: var(--busan-blue);">
+            <div class="card-title">🚐 桃園機場接送（回台後．aeroride）</div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px;">7/5 抵台後，從桃園機場直接接送回台北住家，已預約完成 ✅</p>
+            <div class="info-row" style="border-bottom:1px solid var(--border-color); padding:6px 0;">
+                <span style="font-size:0.82rem; color:var(--text-muted);">訂單編號</span>
+                <span style="font-size:0.82rem; font-weight:600; float:right;">PH20260615195812</span>
+            </div>
+            <div style="font-size:0.85rem; line-height:1.9; margin-top:8px;">
+                <div>👤 乘客姓名：許雲旭｜📞 0988858143</div>
+                <div>✈️ 對應航班：Jeju Air 7C6153</div>
+                <div>📍 啟程地：臺灣桃園國際機場 TPE</div>
+                <div>🏠 目的地：台北市萬華區柳州街25號</div>
+                <div>⏰ 預約時間：2026-07-05 23:30（依航班時間，提供90分鐘等待）</div>
+                <div>🚗 車型：舒適5人座｜👨‍👩‍👧 乘客3人｜🧳 行李3件</div>
+                <div>➕ 加購：兒童座椅2-5歲 ×1</div>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top:-6px;">
+            <div class="callout-emoji">🚕</div>
+            <div style="font-size:0.85rem;"><strong>釜山端飯店→金海機場：</strong>未預約接送車，當天直接在飯店叫計程車前往機場（車程約40-45分鐘，₩30,000–45,000，已列在Day5行程中）。</div>
+        </div>
+
         <div class="section-title">📆 每日行程摘要</div>
         <div class="section-sub">點擊卡片可直接跳轉至該天的詳細時間軸</div>
 
@@ -664,7 +704,7 @@
                 <div class="timeline-activity">📸 平交道打卡＋青沙浦天空步道</div>
                 <p class="timeline-desc">出青沙浦站，馬上拍「灌籃高手平交道」（趁遊客少）→ 步行或計程車2分鐘到天空步道，挑戰透明玻璃地板，鳥瞰清澈大海。推車可通行，10:30剛開放，光線好人少。步道長約200公尺，來回步行約10–15分鐘。</p>
                 <span class="price-tag">天空步道／平交道打卡 均免費</span>
-                <div class="img-placeholder"><span>📷 青沙浦天空步道</span><span style="font-size:0.7rem; color:#B0B0B0;">尺寸建議 16:9</span></div>
+                <div class="img-placeholder"><img src="images/songdo-skywalk-cheongsapo.jpg" alt="📷 青沙浦天空步道" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>📷 青沙浦天空步道</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/songdo-skywalk-cheongsapo.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EC%B2%AD%EC%82%AC%ED%8F%AC%EC%8A%A4%EC%BA%A1%EC%9B%8C%ED%81%AC" target="_blank" class="map-btn">📍 青沙浦天空步道</a>
             </div>
 
@@ -674,7 +714,7 @@
                 <div class="timeline-activity">🚡 天空膠囊列車（回程）</div>
                 <p class="timeline-desc">【您預約的場次】青沙浦站 11:00–11:30 第六入場。回到青沙浦站二樓，登上彩色膠囊列車，順光吹風看海30分鐘，有小電扇，寶貝超興奮！抵達尾浦站後直接散步回主街。</p>
                 <span class="badge badge-success">✅ 已預訂 RS26008983848｜₩55,000/3人（信用卡）｜憑KakaoTalk手機登機證入場</span>
-                <div class="img-placeholder"><span>🚡 天空膠囊列車</span></div>
+                <div class="img-placeholder"><img src="images/sky-capsule.jpg" alt="🚡 天空膠囊列車" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚡 天空膠囊列車</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/sky-capsule.jpg</span></div></div>
             </div>
 
             <div class="timeline-item">
@@ -711,7 +751,7 @@
                 <div class="timeline-activity">🏖️ 海雲台沙灘放電</div>
                 <p class="timeline-desc">換短褲拖鞋，從飯店走5-7分鐘到海水浴場，太陽偏西、海風涼爽，最舒服的時段。寶貝挖沙、踩水、追海鷗盡情玩。</p>
                 <span class="price-tag">免費（飯店步行5-7分鐘）</span>
-                <div class="img-placeholder"><span>🏖️ 海雲台沙灘</span></div>
+                <div class="img-placeholder"><img src="images/beach-haeundae.jpg" alt="🏖️ 海雲台沙灘" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🏖️ 海雲台沙灘</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/beach-haeundae.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9C%A0%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" class="map-btn">📍 海雲台沙灘</a>
             </div>
 
@@ -719,7 +759,7 @@
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">19:00–20:30</div>
                 <div class="timeline-activity">🏪 海雲台傳統市場覓食</div>
-                <p class="timeline-desc">玩完沙直接散步到傳統市場（飯店附近步行可達）。帶回飯店吹冷氣配啤酒享用。</p>
+                <p class="timeline-desc">玩完沙直接散步到傳統市場（飯店附近步行可達）。帶回飯店吹冷氣配啤酒享用，或外帶散步邊吃邊逛。</p>
                 <details>
                     <summary>🔍 3選1/組合 晚餐選項</summary>
                     <div class="details-content">①韓式原味炸雞外帶（불닭不辣款）₩20,000–30,000/份
@@ -727,6 +767,26 @@
 ③黑糖堅果糖餅（씨앗호떡）甜滋滋外帶回飯店 ₩2,000/個</div>
                 </details>
                 <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9C%A0%EB%8C%80%EC%9D%8C%EB%82%A0%EC%A0%84%ED%86%B5%EC%83%9C%EC%9E%A5" target="_blank" class="map-btn">📍 海雲台傳統市場</a>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot yellow"></div>
+                <div class="timeline-time">20:30–22:30</div>
+                <div class="timeline-activity">🌙 晚間彈性時段（依當天體力決定）</div>
+                <p class="timeline-desc">第一天通常因紅眼航班較累，這段抓彈性，依全家當下精神狀況三選一：</p>
+                <details open>
+                    <summary>🔍 晚間三方案（依體力決定）</summary>
+                    <div class="details-content">【方案A — 龜南路逛街採買（最輕鬆）】
+飯店巷口出去就是龜南路大街，直接走逛 Olive Young補美妝、Daiso/Artbox買文具雜貨，順便玩沿路拍貼機，步行範圍輕鬆無壓力。
+
+【方案B — emart Haeundae大掃貨（體力中等）】
+從飯店步行約15-20分鐘（或直接計程車）到中洞站旁emart，零食/海苔/泡麵/燒酒/No Brand一次補齊，現場可退稅。營業到23:00。回程行李重建議直接叫車（基本費約₩4,000-5,000）。
+⚠️ 每月第2、4個週日公休，請出發前再次確認當月是否營業。
+
+【方案C — 提前體驗 Club D Oasis 汗蒸幕（體力充足）】
+如果今天精神還不錯，可以把原訂Day2晚上的汗蒸幕行程提前到今天，先去放鬆泡湯，Day2晚上就能空出來機動使用（比如多留時間逛Outlet或早點休息）。</div>
+                </details>
+                <span class="price-tag">龜南路：飯店巷口即達｜emart：步行15-20分或計程車基本費｜Club D Oasis：建議事先Klook購</span>
             </div>
         </div>
 
@@ -758,7 +818,7 @@
                 <p class="timeline-desc">計程車直達機張，趕上09:30開園第一波。先搭高空吊椅上山，俯瞰機張臨海風景，從山頂坐特製滑車順賽道滑下（速度自控）。4歲半由爸媽抱著安全共乘，刺激又安全。平日早上完全不排隊。</p>
                 <span class="badge badge-success">✅ BIG3 Pass 兌換 A區（原價₩30,000，免費！）</span>
                 <span class="badge badge-orange">現場補購：兒童共乘券 ₩12,000</span>
-                <div class="img-placeholder"><span>🛷 Skyline Luge 機張滑車</span></div>
+                <div class="img-placeholder"><img src="images/skyline-luge.jpg" alt="🛷 Skyline Luge 機張滑車" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🛷 Skyline Luge 機張滑車</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/skyline-luge.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9D%B8%EB%A3%A8%EC%A7%80%20%EA%B8%B0%EC%9E%A5" target="_blank" class="map-btn">📍 Skyline Luge</a>
             </div>
 
@@ -787,7 +847,7 @@
                 <p class="timeline-desc">從新世界百貨步行約3-5分鐘到Museum 1。上億LED地板+巨型螢幕，沉浸式光影藝術，對寶貝像走進巨大萬花筒，大人拍照超出片。下午2-4點是7月紫外線最強時段，在室內最聰明。</p>
                 <span class="badge badge-success">✅ BIG3 Pass 兌換 B區（原價成人₩18,000，免費！）</span>
                 <span class="badge badge-orange">兒童(4-13歲) ₩13,000（需另購）</span>
-                <div class="img-placeholder"><span>🎨 Museum 1 數位媒體藝術館</span></div>
+                <div class="img-placeholder"><img src="images/museum1.jpg" alt="🎨 Museum 1 數位媒體藝術館" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🎨 Museum 1 數位媒體藝術館</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/museum1.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EB%AE%A4%EC%A7%80%EC%97%84%EC%9B%90%20%EC%9E%84%EC%8A%A4" target="_blank" class="map-btn">📍 Museum 1</a>
             </div>
 
@@ -849,7 +909,7 @@
                 <p class="timeline-desc">搭透明水晶車廂跨海飛越，低頭直接看清澈湛藍海水在腳下流動，4歲半寶貝像在海上飛翔，超神奇！</p>
                 <span class="badge badge-success">✅ BIG3 Pass 兌換 B區（原價₩20,000，免費！）</span>
                 <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">建議選「水晶車廂（透明地板）來回票」</p>
-                <div class="img-placeholder"><span>🚠 松島海上纜車</span></div>
+                <div class="img-placeholder"><img src="images/songdo-cable.jpg" alt="🚠 松島海上纜車" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚠 松島海上纜車</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/songdo-cable.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EC%86%A1%EB%8F%84%ED%95%B4%EC%83%81%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4" target="_blank" class="map-btn">📍 松島海上纜車</a>
             </div>
 
@@ -962,7 +1022,7 @@
                 <div class="timeline-activity">🎨 甘川洞文化村</div>
                 <p class="timeline-desc">早鳥避人潮與烈日，順光拍照最美。彩色小屋山城，充滿藝術裝置和壁畫。推車部分路段有坡度，可考慮讓寶貝步行。主要步道全程約1.5–2公里，步行約1-1.5小時。</p>
                 <span class="price-tag">免費（部分展覽₩2,000–5,000）</span>
-                <div class="img-placeholder"><span>🎨 甘川洞文化村</span></div>
+                <div class="img-placeholder"><img src="images/gamcheon.jpg" alt="🎨 甘川洞文化村" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🎨 甘川洞文化村</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/gamcheon.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EA%B0%90%EC%B2%9C%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84" target="_blank" class="map-btn">📍 甘川洞文化村</a>
             </div>
 
@@ -1001,7 +1061,7 @@
                 <div class="timeline-activity">🌉 影島大橋開橋秀</div>
                 <p class="timeline-desc">從百貨側門步行1分鐘到橋邊，卡位觀賞14:00週末限定開橋秀，橋身緩緩升起，氣勢磅礴（約10-15分鐘）。</p>
                 <span class="badge badge-success">免費　週末限定14:00</span>
-                <div class="img-placeholder"><span>🌉 影島大橋開橋秀</span></div>
+                <div class="img-placeholder"><img src="images/yeongdo-bridge.jpg" alt="🌉 影島大橋開橋秀" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🌉 影島大橋開橋秀</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/yeongdo-bridge.jpg</span></div></div>
             </div>
 
             <div class="timeline-item">
@@ -1034,7 +1094,7 @@
                 <p class="timeline-desc">欣賞廣安大橋點燈夜景，帶寶貝坐在沙灘上仰頭看無人機秀，20:00開場，3D燈光圖案變幻超震撼！看完搭計程車回飯店。</p>
                 <span class="badge badge-success">免費！週六限定 20:00 & 22:00（夏季 3–9月）</span>
                 <span class="price-tag">計程車 廣安里→飯店 ₩10,000–15,000</span>
-                <div class="img-placeholder"><span>🌃 廣安里無人機秀</span></div>
+                <div class="img-placeholder"><img src="images/gwangalli-drone.jpg" alt="🌃 廣安里無人機秀" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🌃 廣安里無人機秀</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/gwangalli-drone.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5" target="_blank" class="map-btn">📍 廣安里沙灘</a>
             </div>
         </div>
@@ -1080,7 +1140,7 @@
                 <div class="timeline-activity">♨️ Spa Land 汗蒸幕（登機前最佳享受）</div>
                 <p class="timeline-desc">直接從新世界百貨內無縫進入。4歲半已符合進場年齡，全家一起體驗！換上可愛汗蒸幕衣服，拍「羊角頭」全家福。幾十種不同溫度烤箱、足湯、豪華躺椅。最棒的是：上飛機前在這裡洗澡換衣，讓全家香噴噴清爽登機，寶貝上飛機就能睡！</p>
                 <span class="price-tag">建議Klook/KKday線上購 約₩18,000–25,000起/人（現場購更貴）</span>
-                <div class="img-placeholder"><span>♨️ Spa Land 汗蒸幕</span></div>
+                <div class="img-placeholder"><img src="images/spaland.jpg" alt="♨️ Spa Land 汗蒸幕" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>♨️ Spa Land 汗蒸幕</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/spaland.jpg</span></div></div>
                 <a href="https://www.google.com/maps/search/?api=1&query=%EC%8A%A4%ED%8C%8C%EB%9E%9C%EB%93%9C%20%EC%9C%A0%EC%B6%A9%ED%8C%90%EB%A9%80%EC%9A%A9%EC%82%AC%EC%9C%84" target="_blank" class="map-btn">📍 Spa Land</a>
             </div>
 
@@ -1410,28 +1470,28 @@
         <div class="section-sub">圖片區塊已預留，之後可自行替換為實拍照片</div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🚂 海岸列車（Beach Train）</span><span style="font-size:0.7rem; color:#B0B0B0;">尺寸建議16:9</span></div>
+            <div class="img-placeholder"><img src="images/beach-train.jpg" alt="🚂 海岸列車（Beach Train）" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚂 海岸列車（Beach Train）</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/beach-train.jpg</span></div></div>
             <p><strong>海岸列車（Beach Train）</strong><span class="food-card-kr">海雲台藍線公園／7/1</span></p>
             <p class="food-card-desc">沿海觀光列車，從尾浦站出發，全排座位面向大海，景色一路開闊。去程搭到青沙浦，回程搭天空膠囊不走回頭路。</p>
             <span class="price-tag">₩7,000/人（現場）｜單程約15-20分鐘</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🚡 天空膠囊列車</span></div>
+            <div class="img-placeholder"><img src="images/sky-capsule.jpg" alt="🚡 天空膠囊列車" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚡 天空膠囊列車</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/sky-capsule.jpg</span></div></div>
             <p><strong>天空膠囊列車（Sky Capsule）</strong><span class="food-card-kr">海雲台藍線公園／7/1已預訂</span></p>
             <p class="food-card-desc">獨立彩色小包廂沿海岸線緩慢行進，11:00-11:30是順光時段，海景特別美。車廂內有小電扇，速度緩慢老少皆宜。</p>
             <span class="badge badge-success">✅ 已預訂 ₩55,000/3人</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>📸 灌籃高手平交道</span></div>
+            <div class="img-placeholder"><img src="images/railroad-crossing.jpg" alt="📸 灌籃高手平交道" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>📸 灌籃高手平交道</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/railroad-crossing.jpg</span></div></div>
             <p><strong>灌籃高手平交道</strong><span class="food-card-kr">青沙浦／7/1</span></p>
             <p class="food-card-desc">激似鎌倉高校前的平交道，等彩色天空膠囊列車經過時拍攝。韓版鎌倉打卡點，彩色列車+大海背景，構圖絕美。</p>
             <span class="price-tag">免費｜拍照約10-15分鐘</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🛷 Skyline Luge 機張</span></div>
+            <div class="img-placeholder"><img src="images/skyline-luge.jpg" alt="🛷 Skyline Luge 機張" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🛷 Skyline Luge 機張</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/skyline-luge.jpg</span></div></div>
             <p><strong>Skyline Luge 機張斜坡滑車</strong><span class="food-card-kr">機張／7/2</span></p>
             <p class="food-card-desc">搭吊椅上山後，坐特製滑車從山頂滑下，速度自控，大人抱小孩共乘安全刺激。09:30開園平日完全不排隊。</p>
             <span class="badge badge-success">✅ BIG3 Pass A區（原價₩30,000）</span>
@@ -1439,7 +1499,7 @@
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🎨 Museum 1 數位媒體藝術館</span></div>
+            <div class="img-placeholder"><img src="images/museum1.jpg" alt="🎨 Museum 1 數位媒體藝術館" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🎨 Museum 1 數位媒體藝術館</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/museum1.jpg</span></div></div>
             <p><strong>Museum 1 數位媒體藝術館</strong><span class="food-card-kr">Centum City／7/2</span></p>
             <p class="food-card-desc">上億LED地板+巨型螢幕沉浸式光影藝術，對寶貝像走進巨大萬花筒。下午2-4點入內最消暑避開烈日，緊鄰新世界百貨。</p>
             <span class="badge badge-success">✅ BIG3 Pass B區（原價₩18,000）</span>
@@ -1447,63 +1507,63 @@
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>♨️ Club D Oasis 汗蒸幕</span></div>
+            <div class="img-placeholder"><img src="images/club-d-oasis.jpg" alt="♨️ Club D Oasis 汗蒸幕" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>♨️ Club D Oasis 汗蒸幕</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/club-d-oasis.jpg</span></div></div>
             <p><strong>Club D Oasis 汗蒸幕</strong><span class="food-card-kr">Centum City附近／7/2晚上</span></p>
             <p class="food-card-desc">釜山著名汗蒸幕，木桶浴/岩盤浴/休息室。滑完車逛完街，晚上放鬆最適合，4歲半寶貝可入場。</p>
             <span class="price-tag">Klook/KKday線上購 約₩15,000–25,000</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🚠 松島海上纜車</span></div>
+            <div class="img-placeholder"><img src="images/songdo-cable.jpg" alt="🚠 松島海上纜車" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚠 松島海上纜車</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/songdo-cable.jpg</span></div></div>
             <p><strong>松島海上纜車</strong><span class="food-card-kr">松島／7/3</span></p>
             <p class="food-card-desc">透明水晶車廂跨海飛越，低頭看腳下海水。週五上午排隊時間最短黃金時段。含龍宮步道+岩南公園絕配行程。</p>
             <span class="badge badge-success">✅ BIG3 Pass B區（原價₩20,000）</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>松島龍宮天空步道</span></div>
+            <div class="img-placeholder"><img src="images/songdo-skywalk.jpg" alt="松島龍宮天空步道" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>松島龍宮天空步道</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/songdo-skywalk.jpg</span></div></div>
             <p><strong>松島龍宮天空步道</strong><span class="food-card-kr">松島（下纜車2分鐘）／7/3</span></p>
             <p class="food-card-desc">懸崖鏤空鐵網步道直視腳下海浪，牽著寶貝像海上大冒險。⚠️ 推車寄放纜車站。</p>
             <span class="price-tag">成人₩1,000｜7歲以下免費</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🦕 岩南公園天空花園</span></div>
+            <div class="img-placeholder"><img src="images/amnam-park.jpg" alt="🦕 岩南公園天空花園" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🦕 岩南公園天空花園</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/amnam-park.jpg</span></div></div>
             <p><strong>岩南公園天空花園</strong><span class="food-card-kr">松島（纜車對岸）／7/3</span></p>
             <p class="food-card-desc">巨型恐龍模型裝置（會發聲+擺動），噴泉廣場寶貝跑跑放電。散步約30-45分鐘。</p>
             <span class="badge badge-success">免費</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🎨 甘川洞文化村</span></div>
+            <div class="img-placeholder"><img src="images/gamcheon.jpg" alt="🎨 甘川洞文化村" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🎨 甘川洞文化村</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/gamcheon.jpg</span></div></div>
             <p><strong>甘川洞文化村</strong><span class="food-card-kr">甘川洞／7/4</span></p>
             <p class="food-card-desc">彩色小屋山城，韓國版馬丘比丘。早上09:00到，避人潮順光拍照最美。部分路段有坡度，主要步道全程約1.5–2公里。</p>
             <span class="price-tag">免費（部分展覽₩2,000–5,000）</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🌉 影島大橋開橋秀</span></div>
+            <div class="img-placeholder"><img src="images/yeongdo-bridge.jpg" alt="🌉 影島大橋開橋秀" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🌉 影島大橋開橋秀</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/yeongdo-bridge.jpg</span></div></div>
             <p><strong>影島大橋開橋秀</strong><span class="food-card-kr">南浦洞／7/4（週六）</span></p>
             <p class="food-card-desc">韓國唯一跨海開合橋，週末14:00準時，樂天百貨側門步行1分鐘。橋身緩緩升起，氣勢磅礴。</p>
             <span class="badge badge-success">免費　週末限定14:00</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🏙️ 樂天百貨展望台（光復店）</span></div>
+            <div class="img-placeholder"><img src="images/lotte-observatory.jpg" alt="🏙️ 樂天百貨展望台（光復店）" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🏙️ 樂天百貨展望台（光復店）</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/lotte-observatory.jpg</span></div></div>
             <p><strong>樂天百貨展望台（光復店）</strong><span class="food-card-kr">南浦洞／7/4</span></p>
             <p class="food-card-desc">頂樓11-13F免費開放，360度俯瞰釜山港+影島大橋+釜山塔。育嬰室完善，下午光線清晰。</p>
             <span class="badge badge-success">免費</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>🚁 廣安里無人機秀</span></div>
+            <div class="img-placeholder"><img src="images/gwangalli-drone.jpg" alt="🚁 廣安里無人機秀" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>🚁 廣安里無人機秀</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/gwangalli-drone.jpg</span></div></div>
             <p><strong>廣安里無人機秀</strong><span class="food-card-kr">廣安里沙灘／7/4（週六）</span></p>
             <p class="food-card-desc">週六限定3D無人機光影表演，數百台無人機在廣安大橋夜景前變幻圖案。20:00場最推薦，3D圖案媲美高科技煙火。</p>
             <span class="badge badge-success">免費</span>
         </div>
 
         <div class="card">
-            <div class="img-placeholder"><span>♨️ Spa Land 汗蒸幕</span></div>
+            <div class="img-placeholder"><img src="images/spaland.jpg" alt="♨️ Spa Land 汗蒸幕" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="fallback"><span>♨️ Spa Land 汗蒸幕</span><span style="font-size:0.7rem;">尺寸建議16:9，請放入 images/spaland.jpg</span></div></div>
             <p><strong>Spa Land 汗蒸幕</strong><span class="food-card-kr">新世界百貨Centum City內／7/5</span></p>
             <p class="food-card-desc">全釜山最高級汗蒸幕，直接從新世界百貨進入。「羊角頭」全家福必拍！上飛機前洗澡換衣，寶貝一路睡回台灣。</p>
             <span class="price-tag">Klook/KKday線上購 約₩18,000–25,000</span>
@@ -1568,6 +1628,39 @@
 
     <!-- 5. 購物景點頁籤 -->
     <div id="shopping" class="tab-content">
+
+        <div class="section-title">🏠 海雲台在地必逛（飯店周邊步行可達）</div>
+
+        <div class="card">
+            <div class="food-card-name">🎨 文青與潮牌聚集地：海理團路<span class="food-card-kr">해리단길／海雲台</span></div>
+            <p class="food-card-desc">從海雲台站4號出口出來，往舊火車站後方步行約2分鐘即可抵達。這裡由舊住宅平房改建，充滿異國風情與慢活步調。
+📌 逛街亮點：聚集許多新興韓國文青選物店（人氣雜貨DUPLIT MARKET、風格選物LUFT MANSION）、質感咖啡廳與異國料理餐廳
+📌 必買伴手禮：釜山著名伴手禮 Busan Bada Sand（부산바다샌드）夾心餅乾，店門口有招牌白色小熊，知名打卡熱點！</p>
+            <span class="price-tag">伴手禮₩10,000–20,000｜咖啡₩6,000–10,000</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EB%A6%AC%EB%8B%A8%EA%B8%B8" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🛍️ 海雲台最熱鬧主幹道：龜南路大街<span class="food-card-kr">구남로／海雲台</span></div>
+            <p class="food-card-desc">從地鐵站3號/5號出口一路筆直延伸到海雲台海灘的寬闊步行大街。您住的 Hound Garden &amp; Terrace Hotel 就在這條街的巷子裡，一出門就能開逛！
+📌 逛街亮點：兩側開滿 Olive Young（美妝保養必逛）、Daiso、Artbox（文具雜貨）以及各式韓式拍貼機店
+📌 美食聚集：沿路有著名盲鰻料理、古來思魚糕（Goraesa Eomuk）名店，傍晚或週末常有街頭藝人表演，生活機能極佳</p>
+            <span class="price-tag">美妝₩10,000起｜拍貼機₩10,000/組</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EA%B5%AC%EB%82%A8%EB%A1%9C" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="card">
+            <div class="food-card-name">🛒 海雲台附近大型大賣場：emart Haeundae<span class="food-card-kr">이마트 해운대점</span></div>
+            <p class="food-card-desc">海雲台地區最大間、最主流的大型超市，販售種類極為齊全，是觀光客掃貨首選。
+📌 交通位置：位於地鐵「中洞站」附近（海雲台站的下一站），從飯店或海雲台站步行約15-20分鐘；行李多建議回程直接搭計程車（車資約基本費）
+📌 賣場特色：好幾層樓購物空間，零食/海苔/泡麵/燒酒/美妝齊全，也有自有品牌「No Brand」專區，性價比極高，現場通常設有外國人退稅櫃台
+📌 營業時間：10:00–23:00</p>
+            <span class="price-tag badge-red" style="display:inline-block;">⚠️ 每月第2、4個週日公休，出發前留意</span>
+            <br>
+            <a href="https://www.google.com/maps/search/?api=1&query=%EC%9D%B4%EB%A7%88%ED%8A%B8%20%ED%95%B4%EC%9C%A0%EB%8C%80%EC%A0%90" target="_blank" class="map-btn">📍 Google Maps</a>
+        </div>
+
+        <div class="section-title">🏬 其他購物地點</div>
 
         <div class="card">
             <div class="food-card-name">🏬 新世界百貨 Centum City 店<span class="food-card-kr">7/2 & 7/5</span></div>
